@@ -6,7 +6,7 @@
     HitsRenderState,
     HitsConnectorParams,
   } from "instantsearch.js/es/connectors/hits/connectHits";
-  import { getContext, onMount } from "svelte";
+  import { getContext, onDestroy, onMount } from "svelte";
   import type { InstantSearch } from "instantsearch.js";
 
   // @ts-ignore
@@ -14,6 +14,8 @@
     RendererOptions<HitsConnectorParams<Record<string, unknown>> & object> = {
     hits: [],
   };
+  let makeHits: ReturnType<typeof connectHits>;
+  let hits: ReturnType<typeof makeHits>;
 
   const { getSearch } = getContext<{ getSearch: () => InstantSearch }>("test");
   const search = getSearch();
@@ -24,6 +26,10 @@
     });
     const hits = makeHits({});
     search.addWidgets([hits]);
+  });
+
+  onDestroy(() => {
+    search.removeWidgets([hits]);
   });
 </script>
 

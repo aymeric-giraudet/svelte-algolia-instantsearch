@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { SearchClient } from "algoliasearch/lite";
   import instantsearch, { type InstantSearch } from "instantsearch.js";
-  import { onMount, setContext } from "svelte";
+  import { setContext } from "svelte";
 
   export let indexName: string;
   export let searchClient: SearchClient;
@@ -12,11 +12,13 @@
     getSearch: () => search,
   });
 
-  onMount(() => {
-    search = instantsearch({ indexName, searchClient });
+  $: {
+    if (searchClient) {
+      search = instantsearch({ indexName, searchClient });
 
-    search.start();
-  });
+      search.start();
+    }
+  }
 </script>
 
 {#if search}

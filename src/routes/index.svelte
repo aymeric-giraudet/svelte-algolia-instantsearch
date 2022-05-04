@@ -13,9 +13,7 @@
   });
 </script>
 
-{#if searchClient}
-  <InstantSearch indexName="test" {searchClient}>
-    <SearchBox />
-    <Hits />
-  </InstantSearch>
-{/if}
+<InstantSearch indexName="test" {searchClient}>
+  <SearchBox />
+  <Hits />
+</InstantSearch>

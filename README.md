@@ -1,9 +1,10 @@
 # svelte-algolia-instantsearch
 
 This is a Svelte component library for Algolia's InstantSearch.js.
+
 Connectors were used as a mean to map provided state to our Svelte components.
 
-## Usagee
+## Basic usage
 
 ```html
 <script lang="ts">
@@ -21,10 +22,8 @@ Connectors were used as a mean to map provided state to our Svelte components.
   });
 </script>
 
-{#if searchClient}
-  <InstantSearch indexName="test" {searchClient}>
-    <SearchBox />
-    <Hits />
-  </InstantSearch>
-{/if}
+<InstantSearch indexName="test" {searchClient}>
+  <SearchBox />
+  <Hits />
+</InstantSearch>
 ```

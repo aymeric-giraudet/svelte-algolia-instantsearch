@@ -6,22 +6,28 @@
     SearchBoxRenderState,
     SearchBoxConnectorParams,
   } from "instantsearch.js/es/connectors/search-box/connectSearchBox";
-  import { getContext, onMount } from "svelte";
+  import { getContext, onDestroy, onMount } from "svelte";
   import type { InstantSearch } from "instantsearch.js";
 
   // @ts-ignore
   let state: SearchBoxRenderState & RendererOptions<SearchBoxConnectorParams> =
     {};
+  let makeSearchBox: ReturnType<typeof connectSearchBox>;
+  let searchBox: ReturnType<typeof makeSearchBox>;
 
   const { getSearch } = getContext<{ getSearch: () => InstantSearch }>("test");
   const search = getSearch();
 
   onMount(() => {
-    const makeSearchBox = connectSearchBox((c) => {
+    makeSearchBox = connectSearchBox((c) => {
       state = c;
     });
-    const searchBox = makeSearchBox({});
+    searchBox = makeSearchBox({});
     search.addWidgets([searchBox]);
+  });
+
+  onDestroy(() => {
+    search.removeWidgets([searchBox]);
   });
 </script>
 
