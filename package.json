@@ -11,6 +11,7 @@
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
+    "instantsearch.js": "^4.40.5",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
     "svelte": "^3.44.0",
@@ -21,10 +22,7 @@
     "typescript": "~4.6.2"
   },
   "peerDependencies": {
-    "algoliasearch": "^4.13.0"
+    "algoliasearch": ">= 3.1 < 5"
   },
-  "type": "module",
-  "dependencies": {
-    "instantsearch.js": "^4.40.5"
-  }
+  "type": "module"
 }

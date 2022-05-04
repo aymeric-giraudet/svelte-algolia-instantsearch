@@ -8,7 +8,7 @@
 
   let search: InstantSearch;
 
-  setContext("test", {
+  setContext("algolia", {
     getSearch: () => search,
   });
 
