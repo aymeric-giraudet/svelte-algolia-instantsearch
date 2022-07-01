@@ -11,6 +11,8 @@
 
   let searchClient: SearchClient;
 
+  const test = new Hits<{ label: string }>({ });
+
   onMount(() => {
     searchClient = algoliasearch(
       "4RH55M3WZM",
@@ -22,11 +24,9 @@
 <InstantSearch indexName="test" {searchClient}>
   <SearchBox />
 
-  <Hits>
-    <div slot="item" let:hit>
-      <img src={hit.author_image_url} alt={hit.author_name} />
-      {hit.post_title} by {hit.author_name}
-    </div>
+  <Hits let:hit>
+    <img src={hit.author_image_url} alt={hit.author_name} />
+    {hit.post_title} by {hit.author_name}
   </Hits>
 
   <div style="display:flex;">

@@ -4,7 +4,6 @@
   import connect from "./connect";
 
   const state = connect(connectSearchBox);
-  state.subscribe(console.log);
 
   $: stateValue = $state;
 </script>

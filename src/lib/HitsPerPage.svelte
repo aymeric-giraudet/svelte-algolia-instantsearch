@@ -3,7 +3,16 @@
 
   import connect from "./connect";
 
+  /**
+   * @description The default number of results to display per page.
+   * @default 10
+   */
   export let defaultRefinement = 10;
+
+  /**
+   * @description A list of options to display in the HitsPerPage widget.
+   * @default [{label: "5", value: 5}, {label: "10", value: 10}, {label: "20", value: 20}]
+   */
   export let items = [
     { label: "5", value: 5 },
     { label: "10", value: 10 },
