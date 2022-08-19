@@ -4,21 +4,14 @@
   import connect from "./connect";
 
   const state = connect(connectSearchBox);
-  state.subscribe(console.log);
-
-  $: stateValue = $state;
 </script>
 
-{#if stateValue !== null}
-  <form noValidate>
-    <input
-      type="search"
-      value={stateValue.query}
-      on:input={(event) => stateValue?.refine(event.currentTarget.value)}
-    />
-    <button on:click={() => stateValue?.refine("")} type="button"
-      >Reset query</button
-    >
-    {stateValue.isSearchStalled ? "My search is stalled" : ""}
-  </form>
-{/if}
+<form noValidate>
+  <input
+    type="search"
+    value={$state.query}
+    on:input={(event) => $state.refine(event.currentTarget.value)}
+  />
+  <button on:click={() => $state.refine("")} type="button">Reset query</button>
+  {$state.isSearchStalled ? "My search is stalled" : ""}
+</form>

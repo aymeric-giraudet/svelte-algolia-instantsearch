@@ -17,17 +17,10 @@
   });
 
   let currentValue = defaultRefinement;
-
-  $: stateValue = $state;
 </script>
 
-{#if stateValue !== null}
-  <select
-    bind:value={currentValue}
-    on:change={() => stateValue?.refine(currentValue)}
-  >
-    {#each stateValue.items as item}
-      <option value={item.value}>{item.label}</option>
-    {/each}
-  </select>
-{/if}
+<select bind:value={currentValue} on:change={() => $state.refine(currentValue)}>
+  {#each $state.items as item}
+    <option value={item.value}>{item.label}</option>
+  {/each}
+</select>
