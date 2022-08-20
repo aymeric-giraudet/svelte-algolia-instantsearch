@@ -11,6 +11,11 @@ import algoliasearchHelper from "algoliasearch-helper";
 
 import type { SearchParameters } from "algoliasearch-helper";
 
+/*
+  createSearchResults and getIndexSearchResults were gotten from 
+  https://github.com/algolia/react-instantsearch/blob/v6.31.1/packages/react-instantsearch-hooks/src/lib/getIndexSearchResults.ts and
+  https://github.com/algolia/react-instantsearch/blob/v6.31.1/packages/react-instantsearch-hooks/src/lib/createSearchResults.ts
+*/
 export function createSearchResults<THit>(state: SearchParameters) {
   return new algoliasearchHelper.SearchResults<THit>(
     state,
@@ -78,6 +83,9 @@ export default function connect<
   const search = getSearch();
   const mainIndex = search.mainIndex;
 
+  // Originally just used readable which means I had to initialize widget
+  // in the readable start function, however this keeps us from setting initial state.
+  // Could be nice to have something like widget.subscribe() :)
   const writableState = writable<ExtractStateType<T>>();
   const widget = connector(writableState.set)(widgetParams);
 
@@ -89,6 +97,7 @@ export default function connect<
     };
   });
 
+  // We want to get the initial state so that it will not be null at first render.
   let initialState: ExtractStateType<T> = {} as ExtractStateType<T>;
 
   if (widget.getWidgetRenderState) {
@@ -122,8 +131,10 @@ export default function connect<
     initialState = renderState as ExtractStateType<T>;
   }
 
+  // We set the writable state to the initial state so that it does not overwrite readable with null.
   writableState.set(initialState);
 
+  // We return a readable because it makes more sense than a writable :)
   return readable<ExtractStateType<T>>(initialState, (set) => {
     writableState.subscribe(set);
   });

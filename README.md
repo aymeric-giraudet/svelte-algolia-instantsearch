@@ -4,6 +4,8 @@ This is a Svelte component library for Algolia's InstantSearch.js.
 
 Connectors were used as a mean to map provided state to our Svelte components.
 
+Widgets markup were inspired by [react-instantsearch-hooks-web](https://github.com/algolia/react-instantsearch/tree/master/packages/react-instantsearch-hooks-web/src/ui), as well as some helpers were taken from [react-instantsearch-hooks](https://github.com/algolia/react-instantsearch/tree/master/packages/react-instantsearch-hooks)
+
 ## Installation
 
 ```sh
@@ -16,28 +18,24 @@ npm install svelte-algolia-instantsearch algoliasearch
 
 ```html
 <script lang="ts">
-  import { InstantSearch, SearchBox, Hits, Pagination, HitsPerPage } from "svelte-algolia-instantsearch";
-  import { onMount } from "svelte";
+  import {
+    InstantSearch,
+    SearchBox,
+    Hits,
+    Pagination,
+    HitsPerPage,
+  } from "svelte-algolia-instantsearch";
   import algoliasearch, { type SearchClient } from "algoliasearch/lite";
 
-  let searchClient: SearchClient;
-
-  onMount(() => {
-    searchClient = algoliasearch(
-      "<YOUR_API_KEY>",
-      "<YOUR_SEARCH_KEY>"
-    );
-  });
+  const searchClient = algoliasearch("<YOUR_API_KEY>", "<YOUR_SEARCH_KEY>");
 </script>
 
 <InstantSearch indexName="test" {searchClient}>
   <SearchBox />
 
-  <Hits>
-    <div slot="item" let:hit>
-      <img src={hit.author_image_url} alt={hit.author_name} />
-      {hit.post_title} by {hit.author_name}
-    </div>
+  <Hits let:hit>
+    <img src="{hit.author_image_url}" alt="{hit.author_name}" />
+    {hit.post_title} by {hit.author_name}
   </Hits>
 
   <div style="display:flex;">
