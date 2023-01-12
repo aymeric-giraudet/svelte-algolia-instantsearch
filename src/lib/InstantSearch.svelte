@@ -1,14 +1,14 @@
 <script lang="ts">
   import type { SearchClient } from "algoliasearch/lite";
   import instantsearch, { type InstantSearch } from "instantsearch.js";
-  import { setContext } from "svelte";
+  import { setSearchContext } from "./searchContext";
 
   export let indexName: string;
   export let searchClient: SearchClient;
 
   let search: InstantSearch;
 
-  setContext("algolia", {
+  setSearchContext({
     getSearch: () => search,
   });
 

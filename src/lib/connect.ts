@@ -1,22 +1,20 @@
-import type {
-  Connector,
-  WidgetDescription,
-  InstantSearch,
-} from "instantsearch.js";
+import type { Connector, WidgetDescription } from "instantsearch.js";
 import type { IndexWidget } from "instantsearch.js/es/widgets/index/index";
-import { onMount, getContext } from "svelte";
+import { onMount } from "svelte";
 import { readable, writable, type Readable } from "svelte/store";
 
 import algoliasearchHelper from "algoliasearch-helper";
 
 import type { SearchParameters } from "algoliasearch-helper";
 
+import { getSearchContext } from "./searchContext";
+
 /*
   createSearchResults and getIndexSearchResults were gotten from 
   https://github.com/algolia/react-instantsearch/blob/v6.31.1/packages/react-instantsearch-hooks/src/lib/getIndexSearchResults.ts and
   https://github.com/algolia/react-instantsearch/blob/v6.31.1/packages/react-instantsearch-hooks/src/lib/createSearchResults.ts
 */
-export function createSearchResults<THit>(state: SearchParameters) {
+function createSearchResults<THit>(state: SearchParameters) {
   return new algoliasearchHelper.SearchResults<THit>(
     state,
     [
@@ -41,7 +39,7 @@ export function createSearchResults<THit>(state: SearchParameters) {
   );
 }
 
-export function getIndexSearchResults(indexWidget: IndexWidget) {
+function getIndexSearchResults(indexWidget: IndexWidget) {
   const helper = indexWidget.getHelper()!;
   const results =
     // On SSR, we get the results injected on the Index.
@@ -68,8 +66,9 @@ export function getIndexSearchResults(indexWidget: IndexWidget) {
 }
 
 // With some tricky typing voodoo we're able to get proper state type inference when using connect
-type ExtractStateType<T extends (...args: any) => any> =
-  | Parameters<Parameters<T>[0]>[0];
+type ExtractStateType<T extends (...args: any) => any> = Parameters<
+  Parameters<T>[0]
+>[0];
 
 export default function connect<
   T extends Connector<WidgetDescription, Record<string, unknown>>
@@ -77,9 +76,7 @@ export default function connect<
   connector: T,
   widgetParams: Parameters<ReturnType<T>>[0] = {}
 ): Readable<ExtractStateType<T>> {
-  const { getSearch } = getContext<{ getSearch: () => InstantSearch }>(
-    "algolia"
-  );
+  const { getSearch } = getSearchContext();
   const search = getSearch();
   const mainIndex = search.mainIndex;
 

@@ -6,6 +6,7 @@
     Pagination,
     HitsPerPage,
     PoweredBy,
+    RefinementList,
   } from "$lib";
   import algoliasearch from "algoliasearch/lite";
 
@@ -17,29 +18,31 @@
 
 <InstantSearch indexName="instant_search" {searchClient}>
   <div class="Container">
-    <div />
-  </div>
-
-  <div class="Search">
-    <SearchBox />
-
-    <div class="Search-header">
-      <PoweredBy />
-      <HitsPerPage
-        defaultRefinement={20}
-        items={[
-          { label: "20 hits per page", value: 20 },
-          { label: "40 hits per page", value: 40 },
-        ]}
-      />
+    <div>
+      <RefinementList attribute="brand" />
     </div>
 
-    <Hits let:hit>
-      <span class="Hit-label">{hit.name}</span>
-      <span class="Hit-price">${hit.price}</span>
-    </Hits>
+    <div class="Search">
+      <SearchBox />
 
-    <Pagination />
+      <div class="Search-header">
+        <PoweredBy />
+        <HitsPerPage
+          defaultRefinement={20}
+          items={[
+            { label: "20 hits per page", value: 20 },
+            { label: "40 hits per page", value: 40 },
+          ]}
+        />
+      </div>
+
+      <Hits let:hit>
+        <span class="Hit-label">{hit.name}</span>
+        <span class="Hit-price">${hit.price}</span>
+      </Hits>
+
+      <Pagination />
+    </div>
   </div>
 </InstantSearch>
 
