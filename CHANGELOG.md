@@ -1,3 +1,12 @@
+# 0.5.0 (2023-01-14)
+
+
+### Features
+
+* **InstantSearch:** add `stalledSearchDelay` ([2504079](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/2504079c1b8dd08802517e3a5b9ec65ed568ec1f))
+
+
+
 # 0.4.0 (2023-01-14)
 
 
