@@ -1,29 +1,39 @@
 {
   "name": "svelte-algolia-instantsearch",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "package": "svelte-kit package",
-    "preview": "svelte-kit preview",
-    "prepare": "svelte-kit sync",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
+    "dev": "vite dev",
+    "build": "svelte-kit sync && svelte-package",
+    "prepublishOnly": "echo 'Did you mean to publish `./package/`, instead of `./`?' && exit 1",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "test:unit": "vitest",
+    "lint": "prettier --plugin-search-dir . --check . && eslint .",
+    "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
-    "algoliasearch-helper": "^3.10.0",
-    "instantsearch.js": "^4.44.0",
-    "@sveltejs/adapter-auto": "next",
-    "@sveltejs/kit": "next",
-    "svelte": "^3.49.0",
-    "svelte-check": "^2.8.1",
-    "svelte-preprocess": "^4.10.7",
-    "svelte2tsx": "^0.5.14",
-    "tslib": "^2.4.0",
-    "typescript": "~4.7.4"
+    "@sveltejs/adapter-auto": "^1.0.0",
+    "@sveltejs/kit": "^1.0.0",
+    "@sveltejs/package": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-svelte3": "^4.0.0",
+    "prettier": "^2.8.0",
+    "prettier-plugin-svelte": "^2.8.1",
+    "svelte": "^3.54.0",
+    "svelte-check": "^2.9.2",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0",
+    "vitest": "^0.25.3",
+    "instantsearch.js": "^4.49.4",
+    "algoliasearch-helper": "^3.11.2"
   },
   "peerDependencies": {
-    "algoliasearch": ">= 3.1 < 5"
+    "algoliasearch": ">= 3.1 < 5",
+    "svelte": ">= 3"
   },
   "type": "module"
 }

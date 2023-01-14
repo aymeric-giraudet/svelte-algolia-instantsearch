@@ -17,10 +17,7 @@
   let showLast = true;
 </script>
 
-<div
-  class="ais-Pagination"
-  class:ais-Pagination--noRefinement={currentRefinement <= 1}
->
+<div class="ais-Pagination" class:ais-Pagination--noRefinement={currentRefinement <= 1}>
   <ul class="ais-Pagination-list">
     {#if showFirst}
       <li class="ais-Pagination-item--firstPage">

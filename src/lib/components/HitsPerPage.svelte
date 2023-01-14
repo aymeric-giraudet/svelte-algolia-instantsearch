@@ -15,7 +15,6 @@
       item.value === defaultRefinement ? { ...item, default: true } : item
     ),
   });
-  // TODO: other state values are typed as any for some reason ?
   $: ({ items } = $state);
 
   let currentValue = defaultRefinement;
@@ -28,9 +27,7 @@
     on:change={() => $state.refine(currentValue)}
   >
     {#each items as item}
-      <option class="ais-HitsPerPage-option" value={item.value}
-        >{item.label}</option
-      >
+      <option class="ais-HitsPerPage-option" value={item.value}>{item.label}</option>
     {/each}
   </select>
 </div>

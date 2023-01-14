@@ -13,10 +13,7 @@
 <div class="ais-RefinementList">
   <ul class="ais-RefinementList-list">
     {#each items as item}
-      <li
-        class="ais-RefinementList-item"
-        class:ais-RefinementList-item--selected={item.isRefined}
-      >
+      <li class="ais-RefinementList-item" class:ais-RefinementList-item--selected={item.isRefined}>
         <label class="ais-RefinementList-label">
           <input
             checked={item.isRefined}

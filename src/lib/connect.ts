@@ -66,13 +66,9 @@ function getIndexSearchResults(indexWidget: IndexWidget) {
 }
 
 // With some tricky typing voodoo we're able to get proper state type inference when using connect
-type ExtractStateType<T extends (...args: any) => any> = Parameters<
-  Parameters<T>[0]
->[0];
+type ExtractStateType<T extends (...args: any) => any> = Parameters<Parameters<T>[0]>[0];
 
-export default function connect<
-  T extends Connector<WidgetDescription, Record<string, unknown>>
->(
+export default function connect<T extends Connector<WidgetDescription, Record<string, unknown>>>(
   connector: T,
   widgetParams: Parameters<ReturnType<T>>[0] = {}
 ): Readable<ExtractStateType<T>> {
@@ -100,11 +96,10 @@ export default function connect<
   if (widget.getWidgetRenderState) {
     // The helper exists because we've started InstantSearch.
     const helper = mainIndex.getHelper()!;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     const uiState = mainIndex.getWidgetUiState({})[mainIndex.getIndexId()];
-    helper.state =
-      widget.getWidgetSearchParameters?.(helper.state, { uiState }) ||
-      helper.state;
+    helper.state = widget.getWidgetSearchParameters?.(helper.state, { uiState }) || helper.state;
     const { results, scopedResults } = getIndexSearchResults(mainIndex);
 
     // We get the widget render state by providing the same parameters as
@@ -121,8 +116,10 @@ export default function connect<
       templatesConfig: search.templatesConfig,
       createURL: mainIndex.createURL,
       searchMetadata: {
-        isSearchStalled: search._isSearchStalled,
+        isSearchStalled: search.status === "stalled",
       },
+      error: search.error,
+      status: search.status,
     });
 
     initialState = renderState as ExtractStateType<T>;

@@ -16,7 +16,7 @@ npm install svelte-algolia-instantsearch algoliasearch
 
 ## Basic usage
 
-```html
+```svelte
 <script lang="ts">
   import {
     InstantSearch,
@@ -34,7 +34,7 @@ npm install svelte-algolia-instantsearch algoliasearch
   <SearchBox />
 
   <Hits let:hit>
-    <img src="{hit.author_image_url}" alt="{hit.author_name}" />
+    <img src={hit.author_image_url} alt={hit.author_name} />
     {hit.post_title} by {hit.author_name}
   </Hits>
 
@@ -50,3 +50,15 @@ npm install svelte-algolia-instantsearch algoliasearch
   </div>
 </InstantSearch>
 ```
+
+## Compatibility with SvelteKit SSR / `vite-ssr`
+
+As `instantsearch.js` is currently not compatible with Node.js ESM modules, you need to add the following to the `noExternal` array in your `vite.config.js` file:
+
+```js
+ssr: {
+  noExternal: ["instantsearch.js"],
+},
+```
+
+This slows down the build time and outputs larger files, but it's the only way to make it work for now.
