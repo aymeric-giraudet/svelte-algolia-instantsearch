@@ -1,3 +1,12 @@
+# 0.4.0 (2023-01-14)
+
+
+### Features
+
+* **ToggleRefinement:** add component ([df05fff](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/df05fffe2e0a1b3c7d411f9bbfb9b9268579b78c))
+
+
+
 # 0.3.0 (2023-01-14)
 
 
