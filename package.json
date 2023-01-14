@@ -1,6 +1,6 @@
 {
   "name": "svelte-algolia-instantsearch",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "dev": "vite dev",
     "build": "svelte-kit sync && svelte-package",
@@ -11,15 +11,21 @@
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write ."
   },
+  "dependencies": {
+    "algoliasearch-helper": "^3.11.2",
+    "instantsearch.js": "^4.49.4"
+  },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^1.0.0",
     "@sveltejs/kit": "^1.0.0",
     "@sveltejs/package": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
+    "algoliasearch": "^4.14.3",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-svelte3": "^4.0.0",
+    "instantsearch.js": "^4.49.4",
     "prettier": "^2.8.0",
     "prettier-plugin-svelte": "^2.8.1",
     "svelte": "^3.54.0",
@@ -27,9 +33,7 @@
     "tslib": "^2.4.1",
     "typescript": "^4.9.3",
     "vite": "^4.0.0",
-    "vitest": "^0.25.3",
-    "instantsearch.js": "^4.49.4",
-    "algoliasearch-helper": "^3.11.2"
+    "vitest": "^0.25.3"
   },
   "peerDependencies": {
     "algoliasearch": ">= 3.1 < 5",
