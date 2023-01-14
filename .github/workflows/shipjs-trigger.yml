@@ -15,6 +15,7 @@ jobs:
           ref: main
       - uses: actions/setup-node@v1
         with:
+          node-version: 16.17
           registry-url: "https://registry.npmjs.org"
       - run: |
           if [ -f "yarn.lock" ]; then
