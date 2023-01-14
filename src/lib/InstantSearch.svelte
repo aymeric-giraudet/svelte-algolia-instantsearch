@@ -5,6 +5,7 @@
 
   export let indexName: string;
   export let searchClient: SearchClient;
+  export let stalledSearchDelay: number | undefined = undefined;
 
   let search: InstantSearch;
 
@@ -14,7 +15,7 @@
 
   $: {
     if (searchClient) {
-      search = instantsearch({ indexName, searchClient });
+      search = instantsearch({ indexName, searchClient, stalledSearchDelay });
 
       search.start();
     }
