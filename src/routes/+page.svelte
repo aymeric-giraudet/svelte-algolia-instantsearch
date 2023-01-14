@@ -7,6 +7,7 @@
     HitsPerPage,
     PoweredBy,
     RefinementList,
+    ClearRefinements,
   } from "$lib";
   import algoliasearch from "algoliasearch/lite";
 
@@ -16,6 +17,7 @@
 <InstantSearch indexName="instant_search" {searchClient}>
   <div class="Container">
     <div>
+      <ClearRefinements />
       <RefinementList attribute="brand" />
     </div>
 

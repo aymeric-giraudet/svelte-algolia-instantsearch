@@ -4,3 +4,4 @@ export { default as Pagination } from "./Pagination.svelte";
 export { default as HitsPerPage } from "./HitsPerPage.svelte";
 export { default as PoweredBy } from "./PoweredBy.svelte";
 export { default as RefinementList } from "./RefinementList.svelte";
+export { default as ClearRefinements } from "./ClearRefinements.svelte";
