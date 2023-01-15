@@ -1,10 +1,8 @@
 # svelte-algolia-instantsearch
 
-This is a Svelte component library for Algolia's InstantSearch.js.
+This library is a community-developed wrapper around [instantsearch.js](https://github.com/algolia/instantsearch) for Svelte.
 
-Connectors were used as a mean to map provided state to our Svelte components.
-
-Widgets markup were inspired by [react-instantsearch-hooks-web](https://github.com/algolia/react-instantsearch/tree/master/packages/react-instantsearch-hooks-web/src/ui), as well as some helpers were taken from [react-instantsearch-hooks](https://github.com/algolia/react-instantsearch/tree/master/packages/react-instantsearch-hooks)
+It is meant to be an equivalent of [react-instantsearch-hooks-web](https://github.com/algolia/instantsearch/tree/master/packages/react-instantsearch-hooks-web) for Svelte, exposing a similar API.
 
 ## Installation
 
@@ -17,7 +15,7 @@ npm install svelte-algolia-instantsearch algoliasearch
 ## Basic usage
 
 ```svelte
-<script lang="ts">
+<script>
   import {
     InstantSearch,
     SearchBox,
@@ -25,7 +23,7 @@ npm install svelte-algolia-instantsearch algoliasearch
     Pagination,
     HitsPerPage,
   } from "svelte-algolia-instantsearch";
-  import algoliasearch, { type SearchClient } from "algoliasearch/lite";
+  import algoliasearch from "algoliasearch/lite";
 
   const searchClient = algoliasearch("<YOUR_API_KEY>", "<YOUR_SEARCH_KEY>");
 </script>
@@ -51,7 +49,7 @@ npm install svelte-algolia-instantsearch algoliasearch
 </InstantSearch>
 ```
 
-## Compatibility with SvelteKit SSR / `vite-ssr`
+## Compatibility with SvelteKit SSR
 
 As `instantsearch.js` is currently not compatible with Node.js ESM modules, you need to add the following to the `noExternal` array in your `vite.config.js` file:
 
@@ -62,3 +60,45 @@ ssr: {
 ```
 
 This slows down the build time and outputs larger files, but it's the only way to make it work for now.
+
+## API
+
+### `connect`
+
+The most important part of this library is the `connect` function, which creates and adds a widget to the InstantSearch instance, and returns a Svelte readable store.
+
+Here's an example of how you can use it to build your own components :
+
+```svelte
+<script>
+  import { connect } from "svelte-algolia-instantsearch";
+  import { connectStats } from "instantsearch.js/es/connectors";
+
+  const state = connect(connectStats);
+  $: ({ nbHits, processingTimeMS } = $state);
+</script>
+
+<p>Found {nbHits} results in {processingTimeMS}ms</p>
+```
+
+### Components
+
+It's still a work in progress, but you can use some pre-made components to build your search UI :
+
+- [ ] Breadcrumb
+- [X] ClearRefinements
+- [ ] CurrentRefinements
+- [ ] HierarchicalMenu
+- [ ] Highlight
+- [X] Hits
+- [X] HitsPerPage
+- [ ] InfiniteHits
+- [ ] Menu
+- [X] Pagination
+- [X] PoweredBy
+- [ ] RangeInput
+- [X] RefinementList
+- [X] SearchBox
+- [ ] Snippet
+- [ ] SortBy
+- [X] ToggleRefinement
