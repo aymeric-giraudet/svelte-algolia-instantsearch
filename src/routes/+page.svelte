@@ -18,7 +18,7 @@
 <InstantSearch indexName="instant_search" {searchClient}>
   <div class="Container">
     <div>
-      <ClearRefinements />
+      <ClearRefinements translations={{ reset: "Clear filters" }} />
       <RefinementList attribute="brand" />
       <ToggleRefinement attribute="free_shipping" />
     </div>
