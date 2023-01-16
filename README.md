@@ -86,12 +86,15 @@ Here's an example of how you can use it to build your own components :
 It's still a work in progress, but you can use some pre-made components to build your search UI :
 
 - [ ] Breadcrumb
+- [ ] Configure
 - [X] ClearRefinements
 - [ ] CurrentRefinements
+- [ ] DynamicWidgets
 - [ ] HierarchicalMenu
 - [ ] Highlight
 - [X] Hits
 - [X] HitsPerPage
+- [ ] Index
 - [ ] InfiniteHits
 - [ ] Menu
 - [X] Pagination
@@ -102,3 +105,27 @@ It's still a work in progress, but you can use some pre-made components to build
 - [ ] Snippet
 - [ ] SortBy
 - [X] ToggleRefinement
+
+### `getInstantSearchContext`
+
+This function returns the instance of `InstantSearch` that was instantiated by the `<InstantSearch>` component.
+
+It can be useful if you want to use the `instantsearch.js` API directly, for example to add a custom middleware.
+
+```svelte
+<script>
+  import { getInstantSearchContext } from "$lib";
+  import { createInsightsMiddleware } from "instantsearch.js/es/middlewares";
+  import { onMount } from "svelte";
+
+  const search = getInstantSearchContext();
+
+  onMount(() => {
+    const insightsMiddleware = createInsightsMiddleware({ /* ... */ });
+    search.use(insightsMiddleware);
+    return () => {
+      search.unuse(insightsMiddleware);
+    };
+  });
+</script>
+```

@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { SearchClient } from "algoliasearch/lite";
   import instantsearch, { type InstantSearch } from "instantsearch.js";
-  import { setSearchContext } from "./searchContext";
+  import { setInstantSearchContext } from "./instantSearchContext";
 
   export let indexName: string;
   export let searchClient: SearchClient;
@@ -9,13 +9,11 @@
 
   let search: InstantSearch;
 
-  setSearchContext({
-    getSearch: () => search,
-  });
-
   $: {
     if (searchClient) {
       search = instantsearch({ indexName, searchClient, stalledSearchDelay });
+
+      setInstantSearchContext(search);
 
       search.start();
     }

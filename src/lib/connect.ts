@@ -7,7 +7,7 @@ import algoliasearchHelper from "algoliasearch-helper";
 
 import type { SearchParameters } from "algoliasearch-helper";
 
-import { getSearchContext } from "./searchContext";
+import { getInstantSearchContext } from "./instantSearchContext";
 
 /*
   createSearchResults and getIndexSearchResults were gotten from 
@@ -72,8 +72,7 @@ export default function connect<T extends Connector<WidgetDescription, Record<st
   connector: T,
   widgetParams: Parameters<ReturnType<T>>[0] = {}
 ): Readable<ExtractStateType<T>> {
-  const { getSearch } = getSearchContext();
-  const search = getSearch();
+  const search = getInstantSearchContext();
   const mainIndex = search.mainIndex;
 
   // Originally just used readable which means I had to initialize widget
