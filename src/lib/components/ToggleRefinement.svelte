@@ -4,9 +4,10 @@
 
   import connect from "../connect";
 
-  export let attribute: ToggleRefinementConnectorParams["attribute"];
-  export let on: ToggleRefinementConnectorParams["on"] = undefined;
-  export let off: ToggleRefinementConnectorParams["off"] = undefined;
+  type $$Props = ToggleRefinementConnectorParams;
+  export let attribute: $$Props["attribute"];
+  export let on: $$Props["on"] = undefined;
+  export let off: $$Props["off"] = undefined;
 
   const state = connect(connectToggleRefinement, { attribute, on, off });
   $: ({ refine, value } = $state);
