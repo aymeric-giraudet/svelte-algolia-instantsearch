@@ -26,7 +26,9 @@
 
       if (!serverContext) {
         page.subscribe(({ data }) => {
-          search._initialResults = data;
+          if (Object.keys(data).includes(indexName)) {
+            search._initialResults = data;
+          }
         });
       }
 
