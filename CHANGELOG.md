@@ -1,3 +1,15 @@
+# [0.6.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.5.0...v0.6.0) (2023-01-17)
+
+
+### Features
+
+* **ClearRefinements:** translations and classes ([739649a](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/739649ad522ac1ad810ebd9ccfa3b07f20de1275))
+* expose instant search instance via `getInstantSearchContext` ([2b4b0de](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/2b4b0de28b9f1c39d1f064219494e0eb9258035e))
+* support SSR ([63bd503](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/63bd5036f76b1f57a5d5beb69ce931446cda895d))
+* **ToggleRefinement:** directly expose types from instantsearch ([b31407c](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/b31407c62c36c449e425c42930c56c7f38e810d9))
+
+
+
 # 0.5.0 (2023-01-14)
 
 
