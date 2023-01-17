@@ -473,22 +473,22 @@
     "@types/node" ">=8.9.0"
     axios "^0.21.1"
 
-"@sveltejs/adapter-auto@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@sveltejs/adapter-auto/-/adapter-auto-1.0.0.tgz#0fada089d5a21b1e7e06d853f3766e3a5d128989"
-  integrity sha512-yKyPvlLVua1bJ/42FrR3X041mFGdB4GzTZOAEoHUcNBRE5Mhx94+eqHpC3hNvAOiLEDcKfVO0ObyKSu7qldU+w==
+"@sveltejs/adapter-auto@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@sveltejs/adapter-auto/-/adapter-auto-1.0.1.tgz#63667d53145a15177d03294ac8c928f4c19514ec"
+  integrity sha512-IGek24xN1wJb+gz0hyGSxbIvM7q2K+BXquyycteCWbH9MPosjw8+LuIB2HIH20thE/647UEQBNqCM9R73lAUXA==
   dependencies:
     import-meta-resolve "^2.2.0"
 
-"@sveltejs/kit@^1.0.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.1.0.tgz#80e8abdc9ee9c460e9d3bbcf8e5d65bf560bbffb"
-  integrity sha512-SSAOaEpiBtR7l4Y/jN+AGHonpZUQ2tcl4yhE7S+rqSJA8iw8dxiWPVpNe7JI3N70hXVylezTj9I6P3cykq8a1Q==
+"@sveltejs/kit@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.1.2.tgz#4b02e9a7f35a65efb95e33e1fa179f7e9a4d38db"
+  integrity sha512-bykE1E79i7E757i3yP+N8hSuT63AET5rY7yhqz8do2EgPXsWozwJiQS6wsPlKn7bFDv+3LGeFGV3qSbVo3GmTw==
   dependencies:
     "@sveltejs/vite-plugin-svelte" "^2.0.0"
     "@types/cookie" "^0.5.1"
     cookie "^0.5.0"
-    devalue "^4.2.0"
+    devalue "^4.2.2"
     esm-env "^1.0.0"
     kleur "^4.1.5"
     magic-string "^0.27.0"
@@ -499,7 +499,7 @@
     tiny-glob "^0.2.9"
     undici "5.15.0"
 
-"@sveltejs/package@^1.0.0":
+"@sveltejs/package@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@sveltejs/package/-/package-1.0.2.tgz#5b282e91f17754667db76a11fbd40ed4caca7e83"
   integrity sha512-VY9U+05d9uNFDj7ScKRlHORYlfPSHwJewBjV+V2RsnViexpLFPUrboC9SiPYDCpLnbeqwXerxhO6twGHUBGeIA==
@@ -1233,7 +1233,7 @@ detect-indent@^6.0.0:
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-6.1.0.tgz#592485ebbbf6b3b1ab2be175c8393d04ca0d57e6"
   integrity sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==
 
-devalue@^4.2.0:
+devalue@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/devalue/-/devalue-4.2.2.tgz#5d1ec7cbd82b7873460037f59a1ce834c0100b96"
   integrity sha512-Pkwd8qrI9O20VJ14fBNHu+on99toTNZFbgWRpZbC0zbDXpnE2WHYcrC1fHhMsF/3Ee+2yaW7vEujAT7fCYgqrA==

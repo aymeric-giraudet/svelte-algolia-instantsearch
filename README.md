@@ -61,6 +61,18 @@ ssr: {
 
 This slows down the build time and outputs larger files, but it's the only way to make it work for now.
 
+If you want your page to be fully rendered on the server, which is great for SEO, simply add a `+page.server.js` file next to your `+page.svelte` file, which should contain the following lines :
+
+```js
+import { getServerState } from "svelte-algolia-instantsearch";
+
+import Page from "./+page.svelte";
+
+export const load = () => getServerState(Page);
+```
+
+Now you can check in your network tab that the page containing hits and facets is fully rendered on the server 😁
+
 ## API
 
 ### `connect`
