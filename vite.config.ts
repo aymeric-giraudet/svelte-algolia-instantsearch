@@ -6,6 +6,9 @@ const config: UserConfig = {
   test: {
     include: ["src/**/*.{test,spec}.{js,ts}"],
   },
+  ssr: {
+    noExternal: ["instantsearch.js"],
+  },
 };
 
 export default config;
