@@ -1,3 +1,13 @@
+## [0.6.1](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.6.0...v0.6.1) (2023-01-17)
+
+
+### Bug Fixes
+
+* instantsearch.js in noExternal ([2ad74a5](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/2ad74a583bdc95cbb5c51ef8704192e8ebb028ee))
+* **ssr:** only set initialResults if data includes index as key ([d638e7b](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/d638e7bfa54a4abb58dde758f55fab47ba8ca469))
+
+
+
 # [0.6.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.5.0...v0.6.0) (2023-01-17)
 
 
