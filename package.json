@@ -1,6 +1,16 @@
 {
   "name": "svelte-algolia-instantsearch",
   "version": "0.6.1",
+  "license": "MIT",
+  "description": "Svelte wrapper for Algolia InstantSearch",
+  "repository": "aymeric-giraudet/svelte-algolia-instantsearch",
+  "keywords": [
+    "svelte",
+    "algolia",
+    "instantsearch",
+    "search",
+    "instantsearch.js"
+  ],
   "scripts": {
     "dev": "vite dev",
     "build": "svelte-kit sync && svelte-package",
