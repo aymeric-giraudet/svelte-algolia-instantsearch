@@ -3,11 +3,33 @@
   import type { ClearRefinementsConnectorParams } from "instantsearch.js/es/connectors/clear-refinements/connectClearRefinements";
 
   import connect from "../connect";
-  import { cx } from "./utils/cx";
+  import { cx } from "./utils";
+
+  type ClearRefinementsClasses = {
+    /**
+     * Class names to apply to the root element
+     */
+    root: string;
+    /**
+     * Class names to apply to the button
+     */
+    button: string;
+    /**
+     * Class names to apply to the button when it's disabled
+     */
+    disabledButton: string;
+  };
+
+  type ClearRefinementsTranslations = {
+    /**
+     * Label of the button
+     */
+    resetButtonText: string;
+  };
 
   type $$Props = ClearRefinementsConnectorParams & {
-    classes?: Partial<{ root: string; button: string; disabledButton: string }>;
-    translations?: { reset: string };
+    classes?: Partial<ClearRefinementsClasses>;
+    translations?: Partial<ClearRefinementsTranslations>;
   };
   export let includedAttributes: $$Props["includedAttributes"] = undefined;
   export let excludedAttributes: $$Props["excludedAttributes"] = undefined;

@@ -18,8 +18,8 @@
 <InstantSearch indexName="instant_search" {searchClient}>
   <div class="Container">
     <div>
-      <ClearRefinements translations={{ reset: "Clear filters" }} />
-      <RefinementList attribute="brand" />
+      <ClearRefinements translations={{ resetButtonText: "Clear filters" }} />
+      <RefinementList attribute="brand" searchable showMore />
       <ToggleRefinement attribute="free_shipping" />
     </div>
 
@@ -29,9 +29,8 @@
       <div class="Search-header">
         <PoweredBy />
         <HitsPerPage
-          defaultRefinement={20}
           items={[
-            { label: "20 hits per page", value: 20 },
+            { label: "20 hits per page", value: 20, default: true },
             { label: "40 hits per page", value: 40 },
           ]}
         />
