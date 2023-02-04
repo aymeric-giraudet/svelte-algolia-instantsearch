@@ -28,7 +28,7 @@ npm install svelte-algolia-instantsearch algoliasearch
   const searchClient = algoliasearch("<YOUR_API_KEY>", "<YOUR_SEARCH_KEY>");
 </script>
 
-<InstantSearch indexName="test" {searchClient}>
+<InstantSearch indexName="<YOUR_INDEX_NAME>" {searchClient}>
   <SearchBox />
 
   <Hits let:hit>
@@ -39,9 +39,8 @@ npm install svelte-algolia-instantsearch algoliasearch
   <div style="display:flex;">
     <Pagination />
     <HitsPerPage
-      defaultRefinement={5}
       items={[
-        { value: 5, label: "Show 5 hits" },
+        { value: 5, label: "Show 5 hits", default: true },
         { value: 10, label: "Show 10 hits" },
       ]}
     />
@@ -51,12 +50,16 @@ npm install svelte-algolia-instantsearch algoliasearch
 
 ## Compatibility with SvelteKit SSR
 
-As `instantsearch.js` is currently not compatible with Node.js ESM modules, you need to add the following to the `noExternal` array in your `vite.config.js` file:
+As `instantsearch.js` is currently not compatible with Node.js ESM modules, you need to add it to the `ssr.noExternal` array in your `vite.config.js` file:
 
 ```js
-ssr: {
-  noExternal: ["instantsearch.js"],
-},
+// vite.config.js or vite.config.ts
+const config = {
+  // ...
+  ssr: {
+    noExternal: ["instantsearch.js"],
+  },
+};
 ```
 
 This slows down the build time and outputs larger files, but it's the only way to make it work for now.
@@ -98,7 +101,7 @@ Here's an example of how you can use it to build your own components :
 It's still a work in progress, but you can use some pre-made components to build your search UI :
 
 - [ ] Breadcrumb
-- [ ] Configure
+- [X] Configure
 - [X] ClearRefinements
 - [ ] CurrentRefinements
 - [ ] DynamicWidgets
@@ -115,7 +118,7 @@ It's still a work in progress, but you can use some pre-made components to build
 - [X] RefinementList
 - [X] SearchBox
 - [ ] Snippet
-- [ ] SortBy
+- [X] SortBy
 - [X] ToggleRefinement
 
 ### `getInstantSearchContext`

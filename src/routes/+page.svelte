@@ -9,6 +9,7 @@
     RefinementList,
     ClearRefinements,
     ToggleRefinement,
+    SortBy,
   } from "$lib";
   import algoliasearch from "algoliasearch/lite";
 
@@ -18,8 +19,7 @@
 <InstantSearch indexName="instant_search" {searchClient}>
   <div class="Container">
     <div>
-      <ClearRefinements translations={{ resetButtonText: "Clear filters" }} />
-      <RefinementList attribute="brand" searchable showMore />
+      <RefinementList attribute="brand" searchable searchablePlaceholder="Search brands" showMore />
       <ToggleRefinement attribute="free_shipping" />
     </div>
 
@@ -34,6 +34,17 @@
             { label: "40 hits per page", value: 40 },
           ]}
         />
+        <SortBy
+          items={[
+            { label: "Relevance", value: "instant_search" },
+            { label: "Price (asc)", value: "instant_search_price_asc" },
+            { label: "Price (desc)", value: "instant_search_price_desc" },
+          ]}
+        />
+      </div>
+
+      <div class="CurrentRefinements">
+        <ClearRefinements translations={{ resetButtonText: "Clear filters" }} />
       </div>
 
       <Hits let:hit>

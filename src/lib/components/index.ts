@@ -7,3 +7,4 @@ export { default as RefinementList } from "./RefinementList.svelte";
 export { default as ClearRefinements } from "./ClearRefinements.svelte";
 export { default as Configure } from "./Configure.svelte";
 export { default as ToggleRefinement } from "./ToggleRefinement.svelte";
+export { default as SortBy } from "./SortBy.svelte";

@@ -16,6 +16,10 @@ body {
   margin: 0 auto;
 }
 
+img {
+  max-width: 100%;
+}
+
 .Container {
   display: grid;
   align-items: flex-start;
@@ -49,4 +53,23 @@ body {
 
 .Hit-price {
   color: lightslategray;
+}
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  margin: 0 auto;
+}
+
+.ais-CurrentRefinements-label {
+  text-transform: capitalize;
+}
+
+.ais-PoweredBy {
+  margin-top: 0.5rem;
+}
+
+.ais-PoweredBy-logo {
+  height: 1rem;
 }
