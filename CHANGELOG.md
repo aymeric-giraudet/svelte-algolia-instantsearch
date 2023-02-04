@@ -1,3 +1,15 @@
+# [0.7.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.6.1...v0.7.0) (2023-02-04)
+
+
+### Features
+
+* **components:** bridge the API gap with RISH ([99a50a3](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/99a50a3b569181a35407e2eb6838ba82133d5944))
+* **Configure:** add widget ([f139846](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/f13984682ceb6bc60ec812d18ff69c820b664553))
+* **Pagination:** API fully implemented ([149d237](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/149d2376e787e11e4196b466fee06549fb8b5047))
+* **SortBy:** add widget ([5a89ac1](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/5a89ac1185b92c6dcccba1262e15ca73a57639f6))
+
+
+
 ## [0.6.1](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.6.0...v0.6.1) (2023-01-17)
 
 
