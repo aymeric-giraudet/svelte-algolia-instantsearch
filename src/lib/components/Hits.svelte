@@ -48,11 +48,9 @@
   <ol class="ais-Hits-list">
     {#each hits as hit}
       <li class="ais-Hits-item">
-        {#if $$slots.default}
-          <slot {hit} {sendEvent} />
-        {:else}
-          <div style="word-break: break-all;">{JSON.stringify(hit).slice(0, 100)}</div>
-        {/if}
+        <slot {hit} {sendEvent}
+          ><div style="word-break: break-all;">{JSON.stringify(hit).slice(0, 100)}</div></slot
+        >
       </li>
     {/each}
   </ol>

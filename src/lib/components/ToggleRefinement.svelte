@@ -26,15 +26,19 @@
 
   type $$Props = ToggleRefinementConnectorParams & {
     classes?: Partial<ToggleRefinementClassNames>;
+    label?: string;
   };
   export let attribute: $$Props["attribute"];
   export let on: $$Props["on"] = undefined;
   export let off: $$Props["off"] = undefined;
+  export let label: $$Props["label"] = undefined;
 
   export let classes: NonNullable<$$Props["classes"]> = {};
 
   const state = connect(connectToggleRefinement, { attribute, on, off });
   $: ({ refine, value } = $state);
+
+  $: labelToDisplay = label || value.name;
 </script>
 
 <div class={cx("ais-ToggleRefinement", classes.root)}>
@@ -47,7 +51,7 @@
     />
 
     <span class={cx("ais-ToggleRefinement-labelText", classes.labelText)}>
-      {attribute}
+      {labelToDisplay}
     </span>
   </label>
 </div>

@@ -13,14 +13,25 @@
   } from "$lib";
   import algoliasearch from "algoliasearch/lite";
 
+  import Panel from "./Panel.svelte";
+
   const searchClient = algoliasearch("latency", "6be0576ff61c053d5f9a3225e2a90f76");
 </script>
 
 <InstantSearch indexName="instant_search" {searchClient}>
   <div class="Container">
     <div>
-      <RefinementList attribute="brand" searchable searchablePlaceholder="Search brands" showMore />
-      <ToggleRefinement attribute="free_shipping" />
+      <Panel header="Brands"
+        ><RefinementList
+          attribute="brand"
+          searchable
+          searchablePlaceholder="Search brands"
+          showMore
+        /></Panel
+      >
+      <Panel header="Free Shipping">
+        <ToggleRefinement attribute="free_shipping" label="Free shipping" />
+      </Panel>
     </div>
 
     <div class="Search">
