@@ -10,6 +10,7 @@
     ClearRefinements,
     ToggleRefinement,
     SortBy,
+    Highlight,
   } from "$lib";
   import algoliasearch from "algoliasearch/lite";
 
@@ -59,7 +60,7 @@
       </div>
 
       <Hits let:hit>
-        <span class="Hit-label">{hit.name}</span>
+        <Highlight attribute="name" classes={{ root: "Hit-label" }} {hit} />
         <span class="Hit-price">${hit.price}</span>
       </Hits>
 

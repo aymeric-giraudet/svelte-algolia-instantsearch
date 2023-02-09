@@ -106,7 +106,7 @@ It's still a work in progress, but you can use some pre-made components to build
 - [ ] CurrentRefinements
 - [ ] DynamicWidgets
 - [ ] HierarchicalMenu
-- [ ] Highlight
+- [X] Highlight
 - [X] Hits
 - [X] HitsPerPage
 - [ ] Index
@@ -117,7 +117,7 @@ It's still a work in progress, but you can use some pre-made components to build
 - [ ] RangeInput
 - [X] RefinementList
 - [X] SearchBox
-- [ ] Snippet
+- [X] Snippet
 - [X] SortBy
 - [X] ToggleRefinement
 
