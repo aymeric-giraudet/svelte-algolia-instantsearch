@@ -3,7 +3,7 @@
   import { getHighlightedParts, getPropertyByPath, unescape } from "instantsearch.js/es/lib/utils";
   import type { HighlightClassNames } from "./InternalHighlight";
 
-  import { cx } from "./utils";
+  import { cx } from "../utils";
 
   type HighlightPart = { isHighlighted: boolean; value: string };
 

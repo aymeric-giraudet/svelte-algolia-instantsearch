@@ -3,7 +3,7 @@
   import type { SortByConnectorParams } from "instantsearch.js/es/connectors/sort-by/connectSortBy";
 
   import connect from "../connect";
-  import { cx } from "./utils";
+  import { cx } from "../utils";
 
   type SortByClasses = {
     /**

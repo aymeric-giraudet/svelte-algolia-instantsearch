@@ -11,6 +11,8 @@
     ToggleRefinement,
     SortBy,
     Highlight,
+    HierarchicalMenu,
+    Breadcrumb,
   } from "$lib";
   import algoliasearch from "algoliasearch/lite";
 
@@ -18,6 +20,10 @@
 
   const searchClient = algoliasearch("latency", "6be0576ff61c053d5f9a3225e2a90f76");
 </script>
+
+<svelte:head>
+  <title>svelte-algolia-instantsearch | Demo</title>
+</svelte:head>
 
 <InstantSearch indexName="instant_search" {searchClient}>
   <div class="Container">
@@ -30,13 +36,31 @@
           showMore
         /></Panel
       >
+      <Panel header="Hierarchy">
+        <HierarchicalMenu
+          attributes={[
+            "hierarchicalCategories.lvl0",
+            "hierarchicalCategories.lvl1",
+            "hierarchicalCategories.lvl2",
+          ]}
+          showMore
+        />
+      </Panel>
       <Panel header="Free Shipping">
         <ToggleRefinement attribute="free_shipping" label="Free shipping" />
       </Panel>
     </div>
 
     <div class="Search">
-      <SearchBox />
+      <Breadcrumb
+        attributes={[
+          "hierarchicalCategories.lvl0",
+          "hierarchicalCategories.lvl1",
+          "hierarchicalCategories.lvl2",
+        ]}
+      />
+
+      <SearchBox placeholder="Search" />
 
       <div class="Search-header">
         <PoweredBy />

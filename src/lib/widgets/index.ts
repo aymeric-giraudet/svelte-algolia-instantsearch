@@ -10,3 +10,5 @@ export { default as ToggleRefinement } from "./ToggleRefinement.svelte";
 export { default as SortBy } from "./SortBy.svelte";
 export { default as Highlight } from "./Highlight.svelte";
 export { default as Snippet } from "./Snippet.svelte";
+export { default as Breadcrumb } from "./Breadcrumb.svelte";
+export { default as HierarchicalMenu } from "./HierarchicalMenu.svelte";

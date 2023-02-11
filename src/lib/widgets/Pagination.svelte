@@ -3,8 +3,8 @@
   import type { PaginationConnectorParams } from "instantsearch.js/es/connectors/pagination/connectPagination";
 
   import connect from "../connect";
-  import { cx } from "./utils";
-  import PaginationItem from "./PaginationItem.svelte";
+  import { cx } from "../utils";
+  import PaginationItem from "../components/PaginationItem.svelte";
 
   type PaginationClasses = {
     /**

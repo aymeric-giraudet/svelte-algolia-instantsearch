@@ -3,7 +3,7 @@
   import type { ToggleRefinementConnectorParams } from "instantsearch.js/es/connectors/toggle-refinement/connectToggleRefinement";
 
   import connect from "../connect";
-  import { cx } from "./utils";
+  import { cx } from "../utils";
 
   type ToggleRefinementClassNames = {
     /**

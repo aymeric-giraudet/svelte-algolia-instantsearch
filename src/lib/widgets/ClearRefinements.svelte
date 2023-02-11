@@ -3,7 +3,7 @@
   import type { ClearRefinementsConnectorParams } from "instantsearch.js/es/connectors/clear-refinements/connectClearRefinements";
 
   import connect from "../connect";
-  import { cx } from "./utils";
+  import { cx } from "../utils";
 
   type ClearRefinementsClasses = {
     /**

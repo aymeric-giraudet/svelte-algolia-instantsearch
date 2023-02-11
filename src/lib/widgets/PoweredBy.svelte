@@ -3,7 +3,7 @@
   import type { PoweredByConnectorParams } from "instantsearch.js/es/connectors/powered-by/connectPoweredBy";
 
   import connect from "../connect";
-  import { cx } from "./utils";
+  import { cx } from "../utils";
 
   type PoweredByClassNames = {
     /**

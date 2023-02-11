@@ -3,7 +3,7 @@
   import type { HitsConnectorParams } from "instantsearch.js/es/connectors/hits/connectHits";
 
   import connect from "../connect";
-  import { cx } from "./utils";
+  import { cx } from "../utils";
 
   type HitsClasses = {
     /**

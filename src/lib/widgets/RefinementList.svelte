@@ -3,8 +3,9 @@
   import type { RefinementListConnectorParams } from "instantsearch.js/es/connectors/refinement-list/connectRefinementList";
 
   import connect from "../connect";
-  import type { ShowMoreButtonTranslations } from "./showMore";
-  import { cx } from "./utils";
+  import type { ShowMoreButtonTranslations } from "../components/ShowMoreButton";
+  import { cx } from "../utils";
+  import ShowMoreButton from "$lib/components/ShowMoreButton.svelte";
 
   type RefinementListClassNames = {
     /**
@@ -219,14 +220,16 @@
   {/if}
 
   {#if showMore}
-    <button
+    <ShowMoreButton
       class={cx(
         "ais-RefinementList-showMore",
         classes.showMore,
         !canToggleShowMore && cx("ais-RefinementList-showMore--disabled", classes.disabledShowMore)
       )}
       disabled={!canToggleShowMore}
-      on:click={() => toggleShowMore()}>{labels.showMoreButtonText({ isShowingMore })}</button
-    >
+      onClick={() => toggleShowMore()}
+      translations={{ showMoreButtonText: labels.showMoreButtonText }}
+      {isShowingMore}
+    />
   {/if}
 </div>

@@ -100,26 +100,26 @@ Here's an example of how you can use it to build your own components :
 
 It's still a work in progress, but you can use some pre-made components to build your search UI :
 
-- [ ] Breadcrumb
-- [X] Configure
-- [X] ClearRefinements
+- [X] Breadcrumb
+- [x] Configure
+- [x] ClearRefinements
 - [ ] CurrentRefinements
 - [ ] DynamicWidgets
-- [ ] HierarchicalMenu
-- [X] Highlight
-- [X] Hits
-- [X] HitsPerPage
+- [X] HierarchicalMenu
+- [x] Highlight
+- [x] Hits
+- [x] HitsPerPage
 - [ ] Index
 - [ ] InfiniteHits
 - [ ] Menu
-- [X] Pagination
-- [X] PoweredBy
+- [x] Pagination
+- [x] PoweredBy
 - [ ] RangeInput
-- [X] RefinementList
-- [X] SearchBox
-- [X] Snippet
-- [X] SortBy
-- [X] ToggleRefinement
+- [x] RefinementList
+- [x] SearchBox
+- [x] Snippet
+- [x] SortBy
+- [x] ToggleRefinement
 
 ### `getInstantSearchContext`
 
@@ -136,7 +136,9 @@ It can be useful if you want to use the `instantsearch.js` API directly, for exa
   const search = getInstantSearchContext();
 
   onMount(() => {
-    const insightsMiddleware = createInsightsMiddleware({ /* ... */ });
+    const insightsMiddleware = createInsightsMiddleware({
+      /* ... */
+    });
     search.use(insightsMiddleware);
     return () => {
       search.unuse(insightsMiddleware);

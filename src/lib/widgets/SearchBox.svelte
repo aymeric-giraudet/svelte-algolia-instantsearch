@@ -3,7 +3,7 @@
   import type { SearchBoxConnectorParams } from "instantsearch.js/es/connectors/search-box/connectSearchBox";
 
   import connect from "../connect";
-  import { cx } from "./utils";
+  import { cx } from "../utils";
 
   type SearchBoxClasses = {
     /**

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { cx } from "./utils";
+  import { cx } from "../utils";
 
   export let isDisabled: boolean;
   export let itemClass: string;
