@@ -13,6 +13,9 @@
     Highlight,
     HierarchicalMenu,
     Breadcrumb,
+    CurrentRefinements,
+    Menu,
+    RangeInput,
   } from "$lib";
   import algoliasearch from "algoliasearch/lite";
 
@@ -45,6 +48,12 @@
           ]}
           showMore
         />
+      </Panel>
+      <Panel header="Categories">
+        <Menu attribute="categories" showMore />
+      </Panel>
+      <Panel header="Price">
+        <RangeInput attribute="price" />
       </Panel>
       <Panel header="Free Shipping">
         <ToggleRefinement attribute="free_shipping" label="Free shipping" />
@@ -80,6 +89,19 @@
       </div>
 
       <div class="CurrentRefinements">
+        <CurrentRefinements
+          transformItems={(items) =>
+            items.map((item) => {
+              const label = item.label.startsWith("hierarchicalCategories")
+                ? "Hierarchy"
+                : item.label;
+
+              return {
+                ...item,
+                label,
+              };
+            })}
+        />
         <ClearRefinements translations={{ resetButtonText: "Clear filters" }} />
       </div>
 

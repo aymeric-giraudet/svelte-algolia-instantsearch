@@ -12,3 +12,6 @@ export { default as Highlight } from "./Highlight.svelte";
 export { default as Snippet } from "./Snippet.svelte";
 export { default as Breadcrumb } from "./Breadcrumb.svelte";
 export { default as HierarchicalMenu } from "./HierarchicalMenu.svelte";
+export { default as CurrentRefinements } from "./CurrentRefinements.svelte";
+export { default as Menu } from "./Menu.svelte";
+export { default as RangeInput } from "./RangeInput.svelte";

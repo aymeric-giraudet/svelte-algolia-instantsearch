@@ -4,5 +4,5 @@
 
 <div class="ais-Panel">
   {#if header}<div class="ais-Panel-header">{header}</div>{/if}
-  <slot />
+  <div class="ais-Panel-body"><slot /></div>
 </div>

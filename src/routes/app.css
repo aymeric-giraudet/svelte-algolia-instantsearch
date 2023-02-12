@@ -73,3 +73,7 @@ img {
 .ais-PoweredBy-logo {
   height: 1rem;
 }
+
+.ais-RangeInput-input {
+  width: 82px;
+}

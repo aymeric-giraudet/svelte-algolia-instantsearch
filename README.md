@@ -103,7 +103,7 @@ It's still a work in progress, but you can use some pre-made components to build
 - [X] Breadcrumb
 - [x] Configure
 - [x] ClearRefinements
-- [ ] CurrentRefinements
+- [X] CurrentRefinements
 - [ ] DynamicWidgets
 - [X] HierarchicalMenu
 - [x] Highlight
@@ -111,10 +111,10 @@ It's still a work in progress, but you can use some pre-made components to build
 - [x] HitsPerPage
 - [ ] Index
 - [ ] InfiniteHits
-- [ ] Menu
+- [X] Menu
 - [x] Pagination
 - [x] PoweredBy
-- [ ] RangeInput
+- [X] RangeInput
 - [x] RefinementList
 - [x] SearchBox
 - [x] Snippet
