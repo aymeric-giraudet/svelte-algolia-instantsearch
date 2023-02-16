@@ -1,10 +1,12 @@
 <script lang="ts">
   import type { SearchClient } from "algoliasearch/lite";
-  import instantsearch, { type InstantSearch } from "instantsearch.js";
+  import InstantSearch from "instantsearch.js/es/lib/InstantSearch";
   import { setInstantSearchContext } from "./instantSearchContext";
-  import { onDestroy, tick } from "svelte";
+  import { tick } from "svelte";
   import { getServerContext } from "./getServerState";
   import { page } from "$app/stores";
+  import { setIndexContext } from "./indexContext";
+  import { onDestroyClientSide } from "./utils";
 
   export let indexName: string;
   export let searchClient: SearchClient;
@@ -14,38 +16,37 @@
 
   const serverContext = getServerContext();
 
-  $: {
-    if (searchClient) {
-      search = instantsearch({
-        indexName,
-        searchClient,
-        stalledSearchDelay,
+  $: if (searchClient) {
+    search = new InstantSearch({
+      indexName,
+      searchClient,
+      stalledSearchDelay,
+    });
+
+    setInstantSearchContext(search);
+    setIndexContext(search.mainIndex);
+
+    if (!serverContext) {
+      page.subscribe(({ data }) => {
+        if (Object.keys(data).includes(indexName)) {
+          search._initialResults = data;
+        }
       });
+    }
 
-      setInstantSearchContext(search);
+    search.start();
 
-      if (!serverContext) {
-        page.subscribe(({ data }) => {
-          if (Object.keys(data).includes(indexName)) {
-            search._initialResults = data;
-          }
-        });
-      }
+    searchClient.addAlgoliaAgent("svelte-algolia-instantsearch", "1.0.0");
 
-      search.start();
-
-      if (serverContext) {
-        tick().then(() => {
-          serverContext.notifyServer(search);
-        });
-      }
+    if (serverContext) {
+      tick().then(() => {
+        serverContext.notifyServer(search);
+      });
     }
   }
 
-  onDestroy(() => {
-    if (!serverContext) {
-      search.dispose();
-    }
+  onDestroyClientSide(() => {
+    search.dispose();
   });
 </script>
 

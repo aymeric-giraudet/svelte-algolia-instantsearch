@@ -1,6 +1,5 @@
-import type { Connector, WidgetDescription } from "instantsearch.js";
+import type { UiState, Connector, WidgetDescription, Widget } from "instantsearch.js";
 import type { IndexWidget } from "instantsearch.js/es/widgets/index/index";
-import { onMount } from "svelte";
 import { readable, writable, type Readable } from "svelte/store";
 
 import algoliasearchHelper from "algoliasearch-helper";
@@ -8,6 +7,8 @@ import algoliasearchHelper from "algoliasearch-helper";
 import type { SearchParameters } from "algoliasearch-helper";
 
 import { getInstantSearchContext } from "./instantSearchContext";
+import { getIndexContext } from "./indexContext";
+import { onDestroyClientSide } from "./utils";
 
 /*
   createSearchResults and getIndexSearchResults were gotten from 
@@ -40,6 +41,7 @@ function createSearchResults<THit>(state: SearchParameters) {
 }
 
 function getIndexSearchResults(indexWidget: IndexWidget) {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const helper = indexWidget.getHelper()!;
   const results =
     // On SSR, we get the results injected on the Index.
@@ -67,26 +69,26 @@ function getIndexSearchResults(indexWidget: IndexWidget) {
 
 // With some tricky typing voodoo we're able to get proper state type inference when using connect
 type ExtractStateType<T extends (...args: any) => any> = Parameters<Parameters<T>[0]>[0];
+type AdditionalWidgetProperties = Partial<Widget<WidgetDescription>>;
 
 export default function connect<T extends Connector<WidgetDescription, Record<string, unknown>>>(
   connector: T,
-  widgetParams: Parameters<ReturnType<T>>[0] = {}
+  widgetParams: Parameters<ReturnType<T>>[0] = {},
+  additionalWidgetProperties: AdditionalWidgetProperties = {}
 ): Readable<ExtractStateType<T>> {
   const search = getInstantSearchContext();
-  const mainIndex = search.mainIndex;
+  const parentIndex = getIndexContext();
 
   // Originally just used readable which means I had to initialize widget
   // in the readable start function, however this keeps us from setting initial state.
   // Could be nice to have something like widget.subscribe() :)
   const writableState = writable<ExtractStateType<T>>();
-  const widget = connector(writableState.set)(widgetParams);
+  const widget = { ...connector(writableState.set)(widgetParams), ...additionalWidgetProperties };
 
-  onMount(() => {
-    mainIndex.addWidgets([widget]);
+  parentIndex.addWidgets([widget]);
 
-    return () => {
-      mainIndex.removeWidgets([widget]);
-    };
+  onDestroyClientSide(() => {
+    parentIndex.removeWidgets([widget]);
   });
 
   // We want to get the initial state so that it will not be null at first render.
@@ -94,26 +96,25 @@ export default function connect<T extends Connector<WidgetDescription, Record<st
 
   if (widget.getWidgetRenderState) {
     // The helper exists because we've started InstantSearch.
-    const helper = mainIndex.getHelper()!;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    const uiState = mainIndex.getWidgetUiState({})[mainIndex.getIndexId()];
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const helper = parentIndex.getHelper()!;
+    const uiState = parentIndex.getWidgetUiState<UiState>({})[parentIndex.getIndexId()];
     helper.state = widget.getWidgetSearchParameters?.(helper.state, { uiState }) || helper.state;
-    const { results, scopedResults } = getIndexSearchResults(mainIndex);
+    const { results, scopedResults } = getIndexSearchResults(parentIndex);
 
     // We get the widget render state by providing the same parameters as
     // InstantSearch provides to the widget's `render` method.
     // See https://github.com/algolia/instantsearch.js/blob/019cd18d0de6dd320284aa4890541b7fe2198c65/src/widgets/index/index.ts#L604-L617
     const { widgetParams, ...renderState } = widget.getWidgetRenderState({
       helper,
-      parent: mainIndex,
+      parent: parentIndex,
       instantSearchInstance: search,
       results,
       scopedResults,
       state: helper.state,
       renderState: search.renderState,
       templatesConfig: search.templatesConfig,
-      createURL: mainIndex.createURL,
+      createURL: parentIndex.createURL,
       searchMetadata: {
         isSearchStalled: search.status === "stalled",
       },
@@ -128,7 +129,5 @@ export default function connect<T extends Connector<WidgetDescription, Record<st
   writableState.set(initialState);
 
   // We return a readable because it makes more sense than a writable :)
-  return readable<ExtractStateType<T>>(initialState, (set) => {
-    writableState.subscribe(set);
-  });
+  return readable<ExtractStateType<T>>(initialState, writableState.subscribe);
 }

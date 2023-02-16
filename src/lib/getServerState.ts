@@ -3,7 +3,7 @@ import { isIndexWidget } from "instantsearch.js/es/lib/utils";
 import type { IndexWidget } from "instantsearch.js/es/widgets/index/index";
 import { getContext } from "svelte";
 
-const serverContext = Symbol();
+const serverContext = Symbol("InstantSearch:serverContext");
 
 export const getServerContext = () =>
   getContext<{ notifyServer: (search: InstantSearch) => void }>(serverContext);
@@ -13,6 +13,7 @@ export function getServerState(component: any): Promise<Record<string, any>> {
     const notifyServer = async (search: InstantSearch) => {
       await waitForResults(search);
       const results = getInitialResults(search.mainIndex);
+      search.dispose();
       resolve(results);
     };
     component.render({}, { context: new Map([[serverContext, { notifyServer }]]) });
@@ -24,6 +25,7 @@ export function getServerState(component: any): Promise<Record<string, any>> {
  * in `getServerState()`.
  */
 function waitForResults(search: InstantSearch) {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const helper = search.mainHelper!;
 
   helper.searchOnlyWithDerivedHelpers();
@@ -70,6 +72,7 @@ function getInitialResults(rootIndex: IndexWidget): InitialResults {
   const initialResults: InitialResults = {};
 
   walkIndex(rootIndex, (widget) => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const searchResults = widget.getResults()!;
     initialResults[widget.getIndexId()] = {
       // We convert the Helper state to a plain object to pass parsable data

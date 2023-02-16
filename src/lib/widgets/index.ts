@@ -15,3 +15,4 @@ export { default as HierarchicalMenu } from "./HierarchicalMenu.svelte";
 export { default as CurrentRefinements } from "./CurrentRefinements.svelte";
 export { default as Menu } from "./Menu.svelte";
 export { default as RangeInput } from "./RangeInput.svelte";
+export { default as Index } from "./Index.svelte";
