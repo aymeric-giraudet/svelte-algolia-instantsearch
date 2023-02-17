@@ -2,8 +2,8 @@
   import { connectSortBy } from "instantsearch.js/es/connectors";
   import type { SortByConnectorParams } from "instantsearch.js/es/connectors/sort-by/connectSortBy";
 
-  import connect from "../connect";
-  import { cx } from "../utils";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
 
   type SortByClasses = {
     /**
@@ -28,10 +28,14 @@
   export let transformItems: $$Props["transformItems"] = undefined;
   export let classes: NonNullable<$$Props["classes"]> = {};
 
-  const state = connect(connectSortBy, {
-    items,
-    transformItems,
-  });
+  const state = connect(
+    connectSortBy,
+    {
+      items,
+      transformItems,
+    },
+    { $$widgetType: "svelte-ais.sortBy" }
+  );
 
   $: ({ currentRefinement, options, refine } = $state);
 </script>

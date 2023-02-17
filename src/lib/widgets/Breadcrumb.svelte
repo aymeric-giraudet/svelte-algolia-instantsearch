@@ -2,8 +2,8 @@
   import { connectBreadcrumb } from "instantsearch.js/es/connectors";
   import type { BreadcrumbConnectorParams } from "instantsearch.js/es/connectors/breadcrumb/connectBreadcrumb";
 
-  import connect from "../connect";
-  import { cx } from "../utils";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
 
   type Breadcrumbclasses = {
     /**
@@ -59,11 +59,15 @@
     ...translations,
   };
 
-  const state = connect(connectBreadcrumb, {
-    attributes,
-    rootPath,
-    transformItems,
-  });
+  const state = connect(
+    connectBreadcrumb,
+    {
+      attributes,
+      rootPath,
+      transformItems,
+    },
+    { $$widgetType: "svelte-ais.Breadcrumb" }
+  );
   $: ({ canRefine, createURL, items, refine } = $state);
 </script>
 

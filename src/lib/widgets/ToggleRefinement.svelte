@@ -2,8 +2,8 @@
   import { connectToggleRefinement } from "instantsearch.js/es/connectors";
   import type { ToggleRefinementConnectorParams } from "instantsearch.js/es/connectors/toggle-refinement/connectToggleRefinement";
 
-  import connect from "../connect";
-  import { cx } from "../utils";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
 
   type ToggleRefinementClassNames = {
     /**
@@ -35,7 +35,11 @@
 
   export let classes: NonNullable<$$Props["classes"]> = {};
 
-  const state = connect(connectToggleRefinement, { attribute, on, off });
+  const state = connect(
+    connectToggleRefinement,
+    { attribute, on, off },
+    { $$widgetType: "svelte-ais.toggleRefinement" }
+  );
   $: ({ refine, value } = $state);
 
   $: labelToDisplay = label || value.name;

@@ -1,7 +1,27 @@
+<script lang="ts" context="module">
+  export type HighlightClassNames = {
+    /**
+     * Class names to apply to the root element
+     */
+    root: string;
+    /**
+     * Class names to apply to the highlighted parts
+     */
+    highlighted: string;
+    /**
+     * Class names to apply to the non-highlighted parts
+     */
+    nonHighlighted: string;
+    /**
+     * Class names to apply to the separator between highlighted parts
+     */
+    separator: string;
+  };
+</script>
+
 <script lang="ts">
   import type { HitHighlightResult, HitSnippetResult } from "instantsearch.js";
   import { getHighlightedParts, getPropertyByPath, unescape } from "instantsearch.js/es/lib/utils";
-  import type { HighlightClassNames } from "./InternalHighlight";
 
   import { cx } from "../utils";
 

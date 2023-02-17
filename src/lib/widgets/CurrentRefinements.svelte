@@ -52,11 +52,15 @@
   export let transformItems: $$Props["transformItems"] = undefined;
   export let classes: NonNullable<$$Props["classes"]> = {};
 
-  const state = connect(connectCurrentRefinements, {
-    includedAttributes,
-    excludedAttributes,
-    transformItems,
-  });
+  const state = connect(
+    connectCurrentRefinements,
+    {
+      includedAttributes,
+      excludedAttributes,
+      transformItems,
+    },
+    { $$widgetType: "svelte-ais.currentRefinements" }
+  );
   $: ({ items, refine, canRefine } = $state);
 </script>
 

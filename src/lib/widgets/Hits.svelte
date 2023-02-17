@@ -2,8 +2,8 @@
   import { connectHits } from "instantsearch.js/es/connectors";
   import type { HitsConnectorParams } from "instantsearch.js/es/connectors/hits/connectHits";
 
-  import connect from "../connect";
-  import { cx } from "../utils";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
 
   type HitsClasses = {
     /**
@@ -31,10 +31,14 @@
   export let transformItems: $$Props["transformItems"] = undefined;
   export let classes: NonNullable<$$Props["classes"]> = {};
 
-  const state = connect(connectHits, {
-    escapeHTML,
-    transformItems,
-  });
+  const state = connect(
+    connectHits,
+    {
+      escapeHTML,
+      transformItems,
+    },
+    { $$widgetType: "svelte-ais.hits" }
+  );
   $: ({ hits, sendEvent } = $state);
 </script>
 

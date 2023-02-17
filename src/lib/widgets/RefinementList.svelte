@@ -2,10 +2,11 @@
   import { connectRefinementList } from "instantsearch.js/es/connectors";
   import type { RefinementListConnectorParams } from "instantsearch.js/es/connectors/refinement-list/connectRefinementList";
 
-  import connect from "../connect";
-  import type { ShowMoreButtonTranslations } from "../components/ShowMoreButton";
-  import { cx } from "../utils";
-  import ShowMoreButton from "$lib/components/ShowMoreButton.svelte";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
+  import ShowMoreButton, {
+    type ShowMoreButtonTranslations,
+  } from "$lib/components/ShowMoreButton.svelte";
 
   type RefinementListClassNames = {
     /**
@@ -108,16 +109,20 @@
     ...translations,
   };
 
-  const state = connect(connectRefinementList, {
-    attribute,
-    operator,
-    limit,
-    showMore,
-    showMoreLimit,
-    sortBy,
-    escapeFacetValues,
-    transformItems,
-  });
+  const state = connect(
+    connectRefinementList,
+    {
+      attribute,
+      operator,
+      limit,
+      showMore,
+      showMoreLimit,
+      sortBy,
+      escapeFacetValues,
+      transformItems,
+    },
+    { $$widgetType: "svelte-ais.refinementList" }
+  );
 
   $: ({
     items,

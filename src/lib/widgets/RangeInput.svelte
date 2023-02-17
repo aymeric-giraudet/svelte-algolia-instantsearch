@@ -6,8 +6,8 @@
     RangeMin,
   } from "instantsearch.js/es/connectors/range/connectRange";
 
-  import connect from "../connect";
-  import { cx } from "../utils";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
 
   type RangeInputClassNames = {
     /**
@@ -77,12 +77,16 @@
     ...translations,
   };
 
-  const state = connect(connectRange, {
-    attribute,
-    min,
-    max,
-    precision,
-  });
+  const state = connect(
+    connectRange,
+    {
+      attribute,
+      min,
+      max,
+      precision,
+    },
+    { $$widgetType: "svelte-ais.rangeInput" }
+  );
   $: ({ refine, range, start, canRefine } = $state);
   $: step = 1 / Math.pow(10, precision || 0);
 

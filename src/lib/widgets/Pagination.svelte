@@ -2,9 +2,9 @@
   import { connectPagination } from "instantsearch.js/es/connectors";
   import type { PaginationConnectorParams } from "instantsearch.js/es/connectors/pagination/connectPagination";
 
-  import connect from "../connect";
-  import { cx } from "../utils";
-  import PaginationItem from "../components/PaginationItem.svelte";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
+  import PaginationItem from "$lib/components/PaginationItem.svelte";
 
   type PaginationClasses = {
     /**
@@ -143,7 +143,11 @@
     ...translations,
   };
 
-  const state = connect(connectPagination, { padding, totalPages });
+  const state = connect(
+    connectPagination,
+    { padding, totalPages },
+    { $$widgetType: "svelte-ais.pagination" }
+  );
   $: ({ nbPages, pages, currentRefinement, createURL, refine, isFirstPage, isLastPage } = $state);
 
   const firstPageIndex = 0;

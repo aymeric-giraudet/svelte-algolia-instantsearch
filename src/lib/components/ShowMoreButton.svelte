@@ -1,6 +1,20 @@
-<script lang="ts">
-  import type { ShowMoreButtonTranslations } from "./ShowMoreButton";
+<script lang="ts" context="module">
+  export type ShowMoreButtonTextOptions = {
+    /**
+     * Whether the widget is showing more items or not.
+     */
+    isShowingMore: boolean;
+  };
 
+  export type ShowMoreButtonTranslations = {
+    /**
+     * Alternative text for the "Show more" button.
+     */
+    showMoreButtonText(options: ShowMoreButtonTextOptions): string;
+  };
+</script>
+
+<script lang="ts">
   let className: string;
   export { className as class };
 

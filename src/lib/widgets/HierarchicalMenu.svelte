@@ -1,12 +1,69 @@
+<script context="module" lang="ts">
+  export type HierarchicalMenuClassNames = {
+    /**
+     * Class names to apply to the root element
+     */
+    root: string;
+    /**
+     * Class names to apply to the root element when there are no refinements possible
+     */
+    noRefinementRoot: string;
+    /**
+     * Class names to apply to the list element
+     */
+    list: string;
+    /**
+     * Class names to apply to each child list element
+     */
+    childList: string;
+    /**
+     * Class names to apply to each item element
+     */
+    item: string;
+    /**
+     * Class names to apply to the selected item
+     */
+    selectedItem: string;
+    /**
+     * Class names to apply to the parent item of the list
+     */
+    parentItem: string;
+    /**
+     * Class names to apply to each link element
+     */
+    link: string;
+    /**
+     * Class names to apply to the link of each selected item
+     */
+    selectedItemLink: string;
+    /**
+     * Class names to apply to the label of an item element
+     */
+    label: string;
+    /**
+     * Class names to apply to the count of an item element
+     */
+    count: string;
+    /**
+     * Class names to apply to the "Show more" button
+     */
+    showMore: string;
+    /**
+     * Class names to apply to the "Show more" button if it's disabled
+     */
+    disabledShowMore: string;
+  };
+</script>
+
 <script lang="ts">
-  import type { ShowMoreButtonTranslations } from "$lib/components/ShowMoreButton";
-  import ShowMoreButton from "$lib/components/ShowMoreButton.svelte";
+  import ShowMoreButton, {
+    type ShowMoreButtonTranslations,
+  } from "$lib/components/ShowMoreButton.svelte";
   import { connectHierarchicalMenu } from "instantsearch.js/es/connectors";
   import type { HierarchicalMenuConnectorParams } from "instantsearch.js/es/connectors/hierarchical-menu/connectHierarchicalMenu";
 
   import connect from "$lib/connect";
   import { cx } from "$lib/utils";
-  import type { HierarchicalMenuClassNames } from "$lib/components/HierarchicalMenu";
   import HierarchicalList from "$lib/components/HierarchicalList.svelte";
 
   type HierarchicalMenuTranslations = ShowMoreButtonTranslations;
@@ -35,17 +92,21 @@
     ...translations,
   };
 
-  const state = connect(connectHierarchicalMenu, {
-    attributes,
-    limit,
-    rootPath,
-    separator,
-    showMore,
-    showMoreLimit,
-    showParentLevel,
-    sortBy,
-    transformItems,
-  });
+  const state = connect(
+    connectHierarchicalMenu,
+    {
+      attributes,
+      limit,
+      rootPath,
+      separator,
+      showMore,
+      showMoreLimit,
+      showParentLevel,
+      sortBy,
+      transformItems,
+    },
+    { $$widgetType: "svelte-ais.HierarchicalMenu" }
+  );
 
   $: ({ items, canToggleShowMore, refine, createURL, isShowingMore, canRefine, toggleShowMore } =
     $state);

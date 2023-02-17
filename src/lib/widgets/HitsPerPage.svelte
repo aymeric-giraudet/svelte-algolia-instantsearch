@@ -2,8 +2,8 @@
   import { connectHitsPerPage } from "instantsearch.js/es/connectors";
   import type { HitsPerPageConnectorParams } from "instantsearch.js/es/connectors/hits-per-page/connectHitsPerPage";
 
-  import connect from "../connect";
-  import { cx } from "../utils";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
 
   type HitsPerPageClasses = {
     /**

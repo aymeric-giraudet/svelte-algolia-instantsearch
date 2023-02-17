@@ -1,11 +1,12 @@
 <script lang="ts">
-  import type { ShowMoreButtonTranslations } from "$lib/components/ShowMoreButton";
-  import ShowMoreButton from "$lib/components/ShowMoreButton.svelte";
+  import ShowMoreButton, {
+    type ShowMoreButtonTranslations,
+  } from "$lib/components/ShowMoreButton.svelte";
   import { connectMenu } from "instantsearch.js/es/connectors";
   import type { MenuConnectorParams } from "instantsearch.js/es/connectors/menu/connectMenu";
 
-  import connect from "../connect";
-  import { cx } from "../utils";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
 
   type MenuClasses = {
     /**
@@ -73,14 +74,18 @@
     ...translations,
   };
 
-  const state = connect(connectMenu, {
-    attribute,
-    limit,
-    showMore,
-    showMoreLimit,
-    sortBy,
-    transformItems,
-  });
+  const state = connect(
+    connectMenu,
+    {
+      attribute,
+      limit,
+      showMore,
+      showMoreLimit,
+      sortBy,
+      transformItems,
+    },
+    { $$widgetType: "svelte-ais.Menu" }
+  );
   $: ({ canToggleShowMore, isShowingMore, items, refine, createURL, toggleShowMore, canRefine } =
     $state);
 </script>

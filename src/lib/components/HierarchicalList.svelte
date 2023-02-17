@@ -1,7 +1,7 @@
 <script lang="ts">
   import { cx } from "$lib/utils";
+  import type { HierarchicalMenuClassNames } from "$lib/widgets/HierarchicalMenu.svelte";
   import type { HierarchicalMenuRenderState } from "instantsearch.js/es/connectors/hierarchical-menu/connectHierarchicalMenu";
-  import type { HierarchicalMenuClassNames } from "./HierarchicalMenu";
 
   type HierarchicalListClassNames = Omit<
     HierarchicalMenuClassNames,

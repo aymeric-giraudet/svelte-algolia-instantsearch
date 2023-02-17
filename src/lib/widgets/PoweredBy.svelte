@@ -2,8 +2,8 @@
   import { connectPoweredBy } from "instantsearch.js/es/connectors";
   import type { PoweredByConnectorParams } from "instantsearch.js/es/connectors/powered-by/connectPoweredBy";
 
-  import connect from "../connect";
-  import { cx } from "../utils";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
 
   type PoweredByClassNames = {
     /**
@@ -36,7 +36,7 @@
   export let theme: $$Props["theme"] = "light";
   export let classes: NonNullable<$$Props["classes"]> = {};
 
-  const state = connect(connectPoweredBy, { url });
+  const state = connect(connectPoweredBy, { url }, { $$widgetType: "svelte-ais.PoweredBy" });
   $: ({ url: stateUrl } = $state);
 </script>
 

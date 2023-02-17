@@ -1,9 +1,10 @@
 <script lang="ts">
   import type { BaseHit, Hit } from "instantsearch.js";
-  import type { HighlightClassNames } from "../components/InternalHighlight";
-  import InternalHighlight from "../components/InternalHighlight.svelte";
+  import InternalHighlight, {
+    type HighlightClassNames,
+  } from "../components/InternalHighlight.svelte";
 
-  import { cx } from "../utils";
+  import { cx } from "$lib/utils";
 
   export let classes: Partial<HighlightClassNames> = {};
   export let attribute: string;

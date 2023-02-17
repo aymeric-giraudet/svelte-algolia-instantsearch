@@ -2,8 +2,8 @@
   import { connectSearchBox } from "instantsearch.js/es/connectors";
   import type { SearchBoxConnectorParams } from "instantsearch.js/es/connectors/search-box/connectSearchBox";
 
-  import connect from "../connect";
-  import { cx } from "../utils";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
 
   type SearchBoxClasses = {
     /**
@@ -76,7 +76,13 @@
     ...translations,
   };
 
-  const state = connect(connectSearchBox, { queryHook });
+  const state = connect(
+    connectSearchBox,
+    { queryHook },
+    {
+      $$widgetType: "svelte-ais.SearchBox",
+    }
+  );
   $: ({ query, refine, clear, isSearchStalled } = $state);
 
   let input: HTMLInputElement;

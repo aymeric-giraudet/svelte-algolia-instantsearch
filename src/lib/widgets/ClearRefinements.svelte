@@ -2,8 +2,8 @@
   import { connectClearRefinements } from "instantsearch.js/es/connectors";
   import type { ClearRefinementsConnectorParams } from "instantsearch.js/es/connectors/clear-refinements/connectClearRefinements";
 
-  import connect from "../connect";
-  import { cx } from "../utils";
+  import connect from "$lib/connect";
+  import { cx } from "$lib/utils";
 
   type ClearRefinementsClasses = {
     /**
@@ -42,11 +42,15 @@
     ...translations,
   };
 
-  const state = connect(connectClearRefinements, {
-    includedAttributes,
-    excludedAttributes,
-    transformItems,
-  });
+  const state = connect(
+    connectClearRefinements,
+    {
+      includedAttributes,
+      excludedAttributes,
+      transformItems,
+    },
+    { $$widgetType: "svelte-ais.ClearRefinements" }
+  );
   $: ({ canRefine, refine } = $state);
   $: disabled = !canRefine;
 </script>
