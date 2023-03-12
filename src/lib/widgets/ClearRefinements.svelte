@@ -38,7 +38,7 @@
   export let classes: NonNullable<$$Props["classes"]> = {};
 
   const labels = {
-    reset: "Clear refinements",
+    resetButtonText: "Clear refinements",
     ...translations,
   };
 
@@ -65,6 +65,6 @@
     {disabled}
     on:click={refine}
   >
-    {labels.reset}
+    {labels.resetButtonText}
   </button>
 </div>
