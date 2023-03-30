@@ -49,12 +49,12 @@
     hits.length === 0 && cx("ais-Hits--empty", classes.emptyRoot)
   )}
 >
-  <ol class="ais-Hits-list">
+  <ol class={cx("ais-Hits-list", classes.list)}>
     {#each hits as hit}
-      <li class="ais-Hits-item">
-        <slot {hit} {sendEvent}
-          ><div style="word-break: break-all;">{JSON.stringify(hit).slice(0, 100)}</div></slot
-        >
+      <li class={cx("ais-Hits-item", classes.item)}>
+        <slot {hit} {sendEvent}>
+          <div style="word-break: break-all;">{JSON.stringify(hit).slice(0, 100)} />
+        </slot>
       </li>
     {/each}
   </ol>
