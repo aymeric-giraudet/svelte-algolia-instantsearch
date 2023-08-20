@@ -1,3 +1,17 @@
+# [0.8.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.7.0...v0.8.0) (2023-08-20)
+
+
+### Features
+
+* add additionalWidgetProps and default widget types ([58a4494](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/58a44948c780f8f955f47f17bb1ec862f0bb6529))
+* add Breadcrumb and HierarchicalMenu ([0cc9a0d](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/0cc9a0da489ec0f68010ba92296c591ce51fe624))
+* add CurrentRefinements, Menu and RangeInput ([5f20539](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/5f2053918d8c3b8c5ab778ab9466f01dfd4b95d3))
+* add Index component ([716ef3b](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/716ef3ba8aa8a2764631481e8a1562948b81d3f7))
+* added Highlight and Snippet components ([a5e5ff5](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/a5e5ff5519840e599a90f7dcfb91f0d7d2490471))
+* **ToggleRefinement:** now able to specify display label ([47d1102](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/47d1102831deac50be6aa81d42198de53e1ffd07))
+
+
+
 # [0.7.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.6.1...v0.7.0) (2023-02-04)
 
 
