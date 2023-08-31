@@ -122,6 +122,7 @@ It's still a work in progress, but you can use some pre-made components to build
 - [x] SearchBox
 - [x] Snippet
 - [x] SortBy
+- [x] Stats
 - [x] ToggleRefinement
 
 ### `getInstantSearchContext`

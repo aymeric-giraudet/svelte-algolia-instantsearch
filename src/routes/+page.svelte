@@ -60,7 +60,7 @@
         <ToggleRefinement attribute="free_shipping" label="Free shipping" />
       </Panel>
       <Panel header="Stats">
-        <Stats />
+        <Stats translations={{ rootElementText: (options) => `${options.areHitsSorted}` }} />
       </Panel>
     </div>
 

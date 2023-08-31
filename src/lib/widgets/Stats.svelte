@@ -28,7 +28,7 @@
     rootElementText(options: StatsTranslationOptions): string;
   };
 
-  const state = connect(connectStats, undefined, { $$widgetType: "ais.stats" });
+  const state = connect(connectStats, undefined, { $$widgetType: "svelte-ais.stats" });
 
   $: ({ nbHits, processingTimeMS, nbSortedHits, areHitsSorted } = $state);
 
@@ -41,20 +41,24 @@
 
   type $$Props = StatsConnectorParams & {
     classes?: Partial<StatsClasses>;
+    translations?: Partial<StatsTranslations>;
   };
 
   export let classes: NonNullable<$$Props["classes"]> = {};
-  export let translations: StatsTranslations = {
+  export let translations = {};
+
+  const labels = {
     rootElementText(options: StatsTranslationOptions) {
       return options.areHitsSorted
         ? `${options.nbSortedHits!.toLocaleString()} relevant results sorted out of ${options.nbHits.toLocaleString()} found in ${options.processingTimeMS.toLocaleString()}ms`
         : `${options.nbHits.toLocaleString()} results found in ${options.processingTimeMS.toLocaleString()}ms`;
     },
+    ...translations,
   };
 </script>
 
 <div class={cx("ais-Stats", classes.root)}>
   <span class="ais-Stats-text">
-    {translations.rootElementText(translationOptions)}
+    {labels.rootElementText(translationOptions)}
   </span>
 </div>
