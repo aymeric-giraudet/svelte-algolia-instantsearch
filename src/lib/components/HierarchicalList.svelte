@@ -26,14 +26,14 @@
           item.data &&
             item.data.length > 0 &&
             cx("ais-HierarchicalMenu-item--parent", classes.parentItem),
-          item.isRefined && cx("ais-HierarchicalMenu-item--selected", classes.selectedItem)
+          item.isRefined && cx("ais-HierarchicalMenu-item--selected", classes.selectedItem),
         )}
       >
         <a
           class={cx(
             "ais-HierarchicalMenu-link",
             classes.link,
-            item.isRefined && cx("ais-HierarchicalMenu-link--selected", classes.selectedItemLink)
+            item.isRefined && cx("ais-HierarchicalMenu-link--selected", classes.selectedItemLink),
           )}
           href={createURL(item.value)}
           on:click|preventDefault={() => refine(item.value)}

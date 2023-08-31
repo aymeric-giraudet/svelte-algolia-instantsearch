@@ -36,7 +36,7 @@ function createSearchResults<THit>(state: SearchParameters) {
     {
       /** used by connectors to prevent persisting these results */
       __isArtificial: true,
-    }
+    },
   );
 }
 
@@ -68,13 +68,14 @@ function getIndexSearchResults(indexWidget: IndexWidget) {
 }
 
 // With some tricky typing voodoo we're able to get proper state type inference when using connect
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ExtractStateType<T extends (...args: any) => any> = Parameters<Parameters<T>[0]>[0];
 type AdditionalWidgetProperties = Partial<Widget<WidgetDescription>>;
 
 export default function connect<T extends Connector<WidgetDescription, Record<string, unknown>>>(
   connector: T,
   widgetParams: Parameters<ReturnType<T>>[0] = {},
-  additionalWidgetProperties: AdditionalWidgetProperties = {}
+  additionalWidgetProperties: AdditionalWidgetProperties = {},
 ): Readable<ExtractStateType<T>> {
   const search = getInstantSearchContext();
   const parentIndex = getIndexContext();
@@ -105,6 +106,7 @@ export default function connect<T extends Connector<WidgetDescription, Record<st
     // We get the widget render state by providing the same parameters as
     // InstantSearch provides to the widget's `render` method.
     // See https://github.com/algolia/instantsearch.js/blob/019cd18d0de6dd320284aa4890541b7fe2198c65/src/widgets/index/index.ts#L604-L617
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { widgetParams, ...renderState } = widget.getWidgetRenderState({
       helper,
       parent: parentIndex,
@@ -129,5 +131,5 @@ export default function connect<T extends Connector<WidgetDescription, Record<st
   writableState.set(initialState);
 
   // We return a readable because it makes more sense than a writable :)
-  return readable<ExtractStateType<T>>(initialState, writableState.subscribe);
+  return readable<ExtractStateType<T>>(initialState, (set) => writableState.subscribe(set));
 }

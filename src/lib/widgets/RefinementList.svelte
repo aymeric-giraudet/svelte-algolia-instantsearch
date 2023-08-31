@@ -121,7 +121,7 @@
       escapeFacetValues,
       transformItems,
     },
-    { $$widgetType: "svelte-ais.refinementList" }
+    { $$widgetType: "svelte-ais.refinementList" },
   );
 
   $: ({
@@ -143,7 +143,7 @@
   class={cx(
     "ais-RefinementList",
     classes.root,
-    !canRefine && cx("ais-RefinementList--noRefinement", classes.noRefinementRoot)
+    !canRefine && cx("ais-RefinementList--noRefinement", classes.noRefinementRoot),
   )}
 >
   {#if searchable}
@@ -198,7 +198,7 @@
           class={cx(
             "ais-RefinementList-item",
             classes.item,
-            item.isRefined && cx("ais-RefinementList-item--selected", classes.selectedItem)
+            item.isRefined && cx("ais-RefinementList-item--selected", classes.selectedItem),
           )}
         >
           <label class={cx("ais-RefinementList-label", classes.label)}>
@@ -229,7 +229,7 @@
       class={cx(
         "ais-RefinementList-showMore",
         classes.showMore,
-        !canToggleShowMore && cx("ais-RefinementList-showMore--disabled", classes.disabledShowMore)
+        !canToggleShowMore && cx("ais-RefinementList-showMore--disabled", classes.disabledShowMore),
       )}
       disabled={!canToggleShowMore}
       onClick={() => toggleShowMore()}

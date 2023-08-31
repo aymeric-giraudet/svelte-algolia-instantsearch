@@ -7,6 +7,7 @@ export { default as Highlight } from "./Highlight.svelte";
 export { default as Hits } from "./Hits.svelte";
 export { default as HitsPerPage } from "./HitsPerPage.svelte";
 export { default as Index } from "./Index.svelte";
+export { default as InfiniteHits } from "./InfiniteHits.svelte";
 export { default as Menu } from "./Menu.svelte";
 export { default as Pagination } from "./Pagination.svelte";
 export { default as PoweredBy } from "./PoweredBy.svelte";

@@ -9,6 +9,6 @@
   connect(
     connectConfigure,
     { searchParameters: $$props },
-    { $$widgetType: "svelte-ais.Configure" }
+    { $$widgetType: "svelte-ais.Configure" },
   );
 </script>

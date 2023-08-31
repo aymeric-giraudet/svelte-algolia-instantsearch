@@ -112,8 +112,8 @@ It's still a work in progress, but you can use some pre-made components to build
 - [x] Highlight
 - [x] Hits
 - [x] HitsPerPage
-- [ ] Index
-- [ ] InfiniteHits
+- [x] Index
+- [x] InfiniteHits
 - [X] Menu
 - [x] Pagination
 - [x] PoweredBy
