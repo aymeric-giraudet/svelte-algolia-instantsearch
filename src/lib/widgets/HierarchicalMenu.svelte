@@ -105,7 +105,7 @@
       sortBy,
       transformItems,
     },
-    { $$widgetType: "svelte-ais.HierarchicalMenu" }
+    { $$widgetType: "svelte-ais.HierarchicalMenu" },
   );
 
   $: ({ items, canToggleShowMore, refine, createURL, isShowingMore, canRefine, toggleShowMore } =
@@ -116,7 +116,7 @@
   class={cx(
     "ais-HierarchicalMenu",
     classes.root,
-    !canRefine && cx("ais-HierarchicalMenu--noRefinement", classes.noRefinementRoot)
+    !canRefine && cx("ais-HierarchicalMenu--noRefinement", classes.noRefinementRoot),
   )}
 >
   <HierarchicalList {classes} {items} {refine} {createURL} />
@@ -127,7 +127,7 @@
         "ais-HierarchicalMenu-showMore",
         classes.showMore,
         !canToggleShowMore &&
-          cx("ais-HierarchicalMenu-showMore--disabled", classes.disabledShowMore)
+          cx("ais-HierarchicalMenu-showMore--disabled", classes.disabledShowMore),
       )}
       disabled={!canToggleShowMore}
       {isShowingMore}

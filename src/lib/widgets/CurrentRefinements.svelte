@@ -59,7 +59,7 @@
       excludedAttributes,
       transformItems,
     },
-    { $$widgetType: "svelte-ais.currentRefinements" }
+    { $$widgetType: "svelte-ais.currentRefinements" },
   );
   $: ({ items, refine, canRefine } = $state);
 </script>
@@ -68,14 +68,14 @@
   class={cx(
     "ais-CurrentRefinements",
     classes.root,
-    !canRefine && cx("ais-CurrentRefinements--noRefinement", classes.noRefinementRoot)
+    !canRefine && cx("ais-CurrentRefinements--noRefinement", classes.noRefinementRoot),
   )}
 >
   <ul
     class={cx(
       "ais-CurrentRefinements-list",
       classes.list,
-      !canRefine && cx("ais-CurrentRefinements-list--noRefinement", classes.noRefinementList)
+      !canRefine && cx("ais-CurrentRefinements-list--noRefinement", classes.noRefinementList),
     )}
   >
     {#each items as item}

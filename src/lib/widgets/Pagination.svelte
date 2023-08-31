@@ -146,7 +146,7 @@
   const state = connect(
     connectPagination,
     { padding, totalPages },
-    { $$widgetType: "svelte-ais.pagination" }
+    { $$widgetType: "svelte-ais.pagination" },
   );
   $: ({ nbPages, pages, currentRefinement, createURL, refine, isFirstPage, isLastPage } = $state);
 
@@ -160,7 +160,7 @@
   class={cx(
     "ais-Pagination",
     classes.root,
-    currentRefinement <= 1 && cx("ais-Pagination--noRefinement", classes.noRefinementRoot)
+    currentRefinement <= 1 && cx("ais-Pagination--noRefinement", classes.noRefinementRoot),
   )}
 >
   <ul class={cx("ais-Pagination-list", classes.list)}>
@@ -170,7 +170,7 @@
         itemClass={cx(
           "ais-Pagination-item--firstPage",
           classes.firstPageItem,
-          isFirstPage && classes.disabledItem
+          isFirstPage && classes.disabledItem,
         )}
         anchorClass={classes.link}
         ariaLabel={labels.firstPageItemAriaLabel}
@@ -184,7 +184,7 @@
         itemClass={cx(
           "ais-Pagination-item--previousPage",
           classes.previousPageItem,
-          isFirstPage && classes.disabledItem
+          isFirstPage && classes.disabledItem,
         )}
         anchorClass={classes.link}
         ariaLabel={labels.previousPageItemAriaLabel}
@@ -197,7 +197,7 @@
         itemClass={cx(
           "ais-Pagination-item--page",
           classes.pageItem,
-          page === currentRefinement && cx("ais-Pagination-item--selected", classes.selectedItem)
+          page === currentRefinement && cx("ais-Pagination-item--selected", classes.selectedItem),
         )}
         anchorClass={classes.link}
         ariaLabel={labels.pageItemAriaLabel({ currentPage: page + 1, nbPages })}
@@ -211,7 +211,7 @@
         itemClass={cx(
           "ais-Pagination-item--nextPage",
           classes.nextPageItem,
-          isLastPage && classes.disabledItem
+          isLastPage && classes.disabledItem,
         )}
         anchorClass={classes.link}
         ariaLabel={labels.nextPageItemAriaLabel}
@@ -224,7 +224,7 @@
         itemClass={cx(
           "ais-Pagination-item--lastPage",
           classes.lastPageItem,
-          isLastPage && classes.disabledItem
+          isLastPage && classes.disabledItem,
         )}
         anchorClass={classes.link}
         ariaLabel={labels.lastPageItemAriaLabel}

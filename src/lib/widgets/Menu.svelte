@@ -84,7 +84,7 @@
       sortBy,
       transformItems,
     },
-    { $$widgetType: "svelte-ais.Menu" }
+    { $$widgetType: "svelte-ais.Menu" },
   );
   $: ({ canToggleShowMore, isShowingMore, items, refine, createURL, toggleShowMore, canRefine } =
     $state);
@@ -94,7 +94,7 @@
   class={cx(
     "ais-Menu",
     classes.root,
-    !canRefine && cx("ais-Menu--noRefinement", classes.noRefinementRoot)
+    !canRefine && cx("ais-Menu--noRefinement", classes.noRefinementRoot),
   )}
 >
   <ul class={cx("ais-Menu-list", classes.list)}>
@@ -103,7 +103,7 @@
         class={cx(
           "ais-Menu-item",
           classes.item,
-          item.isRefined && cx("ais-Menu-item--selected", classes.selectedItem)
+          item.isRefined && cx("ais-Menu-item--selected", classes.selectedItem),
         )}
       >
         <a
@@ -128,7 +128,7 @@
       class={cx(
         "ais-Menu-showMore",
         classes.showMore,
-        !canToggleShowMore && cx("ais-Menu-showMore--disabled", classes.disabledShowMore)
+        !canToggleShowMore && cx("ais-Menu-showMore--disabled", classes.disabledShowMore),
       )}
       translations={labels}
       {isShowingMore}

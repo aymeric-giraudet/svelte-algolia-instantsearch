@@ -34,7 +34,7 @@
       items,
       transformItems,
     },
-    { $$widgetType: "svelte-ais.sortBy" }
+    { $$widgetType: "svelte-ais.sortBy" },
   );
 
   $: ({ currentRefinement, options, refine } = $state);

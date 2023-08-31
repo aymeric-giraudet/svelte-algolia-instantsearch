@@ -49,7 +49,7 @@
       excludedAttributes,
       transformItems,
     },
-    { $$widgetType: "svelte-ais.ClearRefinements" }
+    { $$widgetType: "svelte-ais.ClearRefinements" },
   );
   $: ({ canRefine, refine } = $state);
   $: disabled = !canRefine;
@@ -60,7 +60,7 @@
     class={cx(
       "ais-ClearRefinements-button",
       classes.button,
-      disabled && cx("ais-ClearRefinements-button--disabled", classes.disabledButton)
+      disabled && cx("ais-ClearRefinements-button--disabled", classes.disabledButton),
     )}
     {disabled}
     on:click={refine}

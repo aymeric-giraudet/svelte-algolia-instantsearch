@@ -38,7 +38,7 @@
   const state = connect(
     connectToggleRefinement,
     { attribute, on, off },
-    { $$widgetType: "svelte-ais.toggleRefinement" }
+    { $$widgetType: "svelte-ais.toggleRefinement" },
   );
   $: ({ refine, value } = $state);
 

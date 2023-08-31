@@ -37,7 +37,7 @@
       escapeHTML,
       transformItems,
     },
-    { $$widgetType: "svelte-ais.hits" }
+    { $$widgetType: "svelte-ais.hits" },
   );
   $: ({ hits, sendEvent } = $state);
 </script>
@@ -46,15 +46,15 @@
   class={cx(
     "ais-Hits",
     classes.root,
-    hits.length === 0 && cx("ais-Hits--empty", classes.emptyRoot)
+    hits.length === 0 && cx("ais-Hits--empty", classes.emptyRoot),
   )}
 >
   <ol class={cx("ais-Hits-list", classes.list)}>
     {#each hits as hit}
       <li class={cx("ais-Hits-item", classes.item)}>
         <slot {hit} {sendEvent}>
-          <div style="word-break: break-all;">{JSON.stringify(hit).slice(0, 100)} />
-        </slot>
+          <div style="word-break: break-all;">{JSON.stringify(hit).slice(0, 100)} /></div></slot
+        >
       </li>
     {/each}
   </ol>

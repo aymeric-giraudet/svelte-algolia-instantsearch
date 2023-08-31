@@ -85,7 +85,7 @@
       max,
       precision,
     },
-    { $$widgetType: "svelte-ais.rangeInput" }
+    { $$widgetType: "svelte-ais.rangeInput" },
   );
   $: ({ refine, range, start, canRefine } = $state);
   $: step = 1 / Math.pow(10, precision || 0);
@@ -103,7 +103,7 @@
 <div
   class={cx(
     cx("ais-RangeInput", classes.root),
-    !canRefine && cx("ais-RangeInput--noRefinement", classes.noRefinementRoot)
+    !canRefine && cx("ais-RangeInput--noRefinement", classes.noRefinementRoot),
   )}
 >
   <form
@@ -116,7 +116,7 @@
           "ais-RangeInput-input",
           classes.input,
           "ais-RangeInput-input--min",
-          classes.inputMin
+          classes.inputMin,
         )}
         type="number"
         placeholder={range.min?.toString()}
@@ -135,7 +135,7 @@
           "ais-RangeInput-input",
           classes.input,
           "ais-RangeInput-input--max",
-          classes.inputMax
+          classes.inputMax,
         )}
         type="number"
         placeholder={range.max?.toString()}

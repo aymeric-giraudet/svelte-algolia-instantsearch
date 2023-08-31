@@ -66,7 +66,7 @@
       rootPath,
       transformItems,
     },
-    { $$widgetType: "svelte-ais.Breadcrumb" }
+    { $$widgetType: "svelte-ais.Breadcrumb" },
   );
   $: ({ canRefine, createURL, items, refine } = $state);
 </script>
@@ -75,7 +75,7 @@
   class={cx(
     "ais-Breadcrumb",
     classes.root,
-    !canRefine && cx("ais-Breadcrumb--noRefinement", classes.noRefinementRoot)
+    !canRefine && cx("ais-Breadcrumb--noRefinement", classes.noRefinementRoot),
   )}
 >
   <ul class={cx("ais-Breadcrumb-list", classes.list)}>
@@ -83,7 +83,7 @@
       class={cx(
         "ais-Breadcrumb-item",
         classes.item,
-        !canRefine && cx("ais-Breadcrumb-item--selected", classes.selectedItem)
+        !canRefine && cx("ais-Breadcrumb-item--selected", classes.selectedItem),
       )}
     >
       <a
@@ -101,7 +101,7 @@
         class={cx(
           "ais-Breadcrumb-item",
           classes.item,
-          isLast && cx("ais-Breadcrumb-item--selected", classes.selectedItem)
+          isLast && cx("ais-Breadcrumb-item--selected", classes.selectedItem),
         )}
       >
         <span aria-hidden="true" class={cx("ais-Breadcrumb-separator", classes.separator)}>

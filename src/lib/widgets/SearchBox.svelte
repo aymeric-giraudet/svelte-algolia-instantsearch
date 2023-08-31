@@ -81,7 +81,7 @@
     { queryHook },
     {
       $$widgetType: "svelte-ais.SearchBox",
-    }
+    },
   );
   $: ({ query, refine, clear, isSearchStalled } = $state);
 

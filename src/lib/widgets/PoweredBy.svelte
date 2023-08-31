@@ -45,7 +45,7 @@
     "ais-PoweredBy",
     classes.root,
     theme === "dark" && cx("ais-PoweredBy--dark", classes.dark),
-    theme === "light" && cx("ais-PoweredBy--light", classes.light)
+    theme === "light" && cx("ais-PoweredBy--light", classes.light),
   )}
 >
   <a
