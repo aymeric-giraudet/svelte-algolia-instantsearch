@@ -16,6 +16,7 @@
     CurrentRefinements,
     Menu,
     RangeInput,
+    Stats,
   } from "$lib";
   import algoliasearch from "algoliasearch/lite";
 
@@ -57,6 +58,9 @@
       </Panel>
       <Panel header="Free Shipping">
         <ToggleRefinement attribute="free_shipping" label="Free shipping" />
+      </Panel>
+      <Panel header="Stats">
+        <Stats />
       </Panel>
     </div>
 
