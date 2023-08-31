@@ -1,3 +1,17 @@
+# [0.9.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.8.0...v0.9.0) (2023-08-31)
+
+
+### Bug Fixes
+
+* added svelte-kit as peerDep ([cadafe3](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/cadafe329f97ea58fe4ec38538cb6ab91c1f90c5))
+
+
+### Features
+
+* **InfiniteHits:** added widget ([7a93538](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/7a935383a5b1af1200deba01c9eedafcc88c153d))
+
+
+
 # [0.8.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.7.0...v0.8.0) (2023-08-20)
 
 

@@ -1,3 +1,3 @@
 module.exports = {
-  publishCommand: ({ defaultCommand }) => `cd package && ${defaultCommand}`,
+  publishCommand: ({ defaultCommand }) => defaultCommand,
 };
