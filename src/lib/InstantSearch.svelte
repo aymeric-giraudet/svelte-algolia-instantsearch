@@ -36,11 +36,8 @@
 
     search.start();
 
-    // Try to add a custom user agent, but don't crash on fail since some instantsearch.js adapters don't have this.
-    try {
-        searchClient.addAlgoliaAgent("svelte-algolia-instantsearch", "1.0.0");
-    } catch (e) {
-        // ignore
+    if('addAlgoliaAgent' in searchClient) {
+      searchClient.addAlgoliaAgent("svelte-algolia-instantsearch", "1.0.0");
     }
 
     if (serverContext) {
