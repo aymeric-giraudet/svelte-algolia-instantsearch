@@ -1,3 +1,12 @@
+## [0.9.2](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.9.1...v0.9.2) (2023-09-10)
+
+
+### Bug Fixes
+
+* types in package.json ([661e4d5](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/661e4d5a2022d8f840c96b7c55c73265bf8378a8))
+
+
+
 ## [0.9.1](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.9.0...v0.9.1) (2023-09-10)
 
 
