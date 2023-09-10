@@ -5,10 +5,10 @@ import { getContext } from "svelte";
 const serverContext = Symbol("InstantSearch:serverContext");
 
 export const getServerContext = () =>
-  getContext<{ notifyServer: (search: InstantSearch) => void }>(serverContext);
+  getContext<{ notifyServer: (search: InstantSearch) => void; serverUrl: URL }>(serverContext);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getServerState(component: any): Promise<Record<string, any>> {
+export function getServerState(component: any, serverUrl: URL): Promise<Record<string, any>> {
   return new Promise((resolve) => {
     const notifyServer = async (search: InstantSearch) => {
       await waitForResults(search);
@@ -16,6 +16,6 @@ export function getServerState(component: any): Promise<Record<string, any>> {
       search.dispose();
       resolve(results);
     };
-    component.render({}, { context: new Map([[serverContext, { notifyServer }]]) });
+    component.render({}, { context: new Map([[serverContext, { notifyServer, serverUrl }]]) });
   });
 }

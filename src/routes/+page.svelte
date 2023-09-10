@@ -29,7 +29,7 @@
   <title>svelte-algolia-instantsearch | Demo</title>
 </svelte:head>
 
-<InstantSearch indexName="instant_search" {searchClient}>
+<InstantSearch indexName="instant_search" routing {searchClient}>
   <div class="Container">
     <div>
       <Panel header="Brands"

@@ -28,7 +28,7 @@ npm install svelte-algolia-instantsearch algoliasearch
   const searchClient = algoliasearch("<YOUR_API_KEY>", "<YOUR_SEARCH_KEY>");
 </script>
 
-<InstantSearch indexName="<YOUR_INDEX_NAME>" {searchClient}>
+<InstantSearch indexName="<YOUR_INDEX_NAME>" routing {searchClient}>
   <SearchBox />
 
   <Hits let:hit>
@@ -60,7 +60,7 @@ import { getServerState } from "svelte-algolia-instantsearch";
 
 import Page from "./+page.svelte";
 
-export const load = () => getServerState(Page);
+export const load = ({ url }) => getServerState(Page, url);
 ```
 
 Now you can check in your network tab that the page containing hits and facets is fully rendered on the server 😁

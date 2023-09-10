@@ -1,4 +1,5 @@
 import Page from "./+page.svelte";
 import { getServerState } from "$lib";
+import type { PageServerLoad } from "./$types";
 
-export const load = () => getServerState(Page);
+export const load: PageServerLoad = ({ url }) => getServerState(Page, url);

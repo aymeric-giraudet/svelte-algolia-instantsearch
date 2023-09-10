@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { SearchClient } from "algoliasearch/lite";
   import InstantSearch from "instantsearch.js/es/lib/InstantSearch";
+  import { history } from "instantsearch.js/es/lib/routers";
   import { setInstantSearchContext } from "./instantSearchContext";
   import { tick } from "svelte";
   import { getServerContext } from "./getServerState";
@@ -11,6 +12,7 @@
   export let indexName: string;
   export let searchClient: SearchClient;
   export let stalledSearchDelay: number | undefined = undefined;
+  export let routing = false;
 
   let search: InstantSearch;
 
@@ -21,6 +23,24 @@
       indexName,
       searchClient,
       stalledSearchDelay,
+      routing: routing && {
+        router: history({
+          getLocation() {
+            if (typeof window === "undefined") {
+              if (serverContext) {
+                return new URL(serverContext.serverUrl) as unknown as Location;
+              } else {
+                let serverUrl;
+                page.subscribe(({ url }) => {
+                  serverUrl = url;
+                });
+                return new URL(serverUrl!) as unknown as Location;
+              }
+            }
+            return window.location;
+          },
+        }),
+      },
     });
 
     setInstantSearchContext(search);
