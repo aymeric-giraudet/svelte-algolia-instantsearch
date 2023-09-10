@@ -50,22 +50,8 @@ npm install svelte-algolia-instantsearch algoliasearch
 
 ## Compatibility with SvelteKit SSR
 
-As `instantsearch.js` is currently not compatible with Node.js ESM modules, you need to add it to the `ssr.noExternal` array in your `vite.config.js` file:
-
-```js
-// vite.config.js or vite.config.ts
-const config = {
-  // ...
-  ssr: {
-    noExternal: ["instantsearch.js"],
-  },
-};
-```
-
 > **Warning**
 > If you are using `pnpm` as a package manager, [please check this issue if you have an error while running your dev script](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/issues/8#issuecomment-1456561953)
-
-This slows down the build time and outputs larger files, but it's the only way to make it work for now.
 
 If you want your page to be fully rendered on the server, which is great for SEO, simply add a `+page.server.js` file next to your `+page.svelte` file, which should contain the following lines :
 
