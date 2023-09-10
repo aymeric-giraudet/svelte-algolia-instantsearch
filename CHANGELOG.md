@@ -1,3 +1,12 @@
+## [0.9.1](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.9.0...v0.9.1) (2023-09-10)
+
+
+### Bug Fixes
+
+* dist was not included in package ([491a675](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/491a67532fc18859e086f25b6ca914e4a93fc636))
+
+
+
 # [0.9.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.8.0...v0.9.0) (2023-08-31)
 
 
