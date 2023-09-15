@@ -56,7 +56,9 @@
 
     search.start();
 
-    searchClient.addAlgoliaAgent("svelte-algolia-instantsearch", "1.0.0");
+    if('addAlgoliaAgent' in searchClient) {
+      searchClient.addAlgoliaAgent("svelte-algolia-instantsearch", "1.0.0");
+    }
 
     if (serverContext) {
       tick().then(() => {
