@@ -1,3 +1,12 @@
+## [0.10.1](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.10.0...v0.10.1) (2023-09-15)
+
+
+### Bug Fixes
+
+* component would fail to load when using an instantsearch adapter ([#16](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/issues/16)) ([8926e29](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/8926e29fcc5c75f33e14a6b18e65bf632d61cbd6))
+
+
+
 # [0.10.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.9.2...v0.10.0) (2023-09-10)
 
 
