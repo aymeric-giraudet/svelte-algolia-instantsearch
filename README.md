@@ -4,6 +4,9 @@ This library is a community-developed wrapper around [instantsearch.js](https://
 
 It is meant to be an equivalent of [react-instantsearch-hooks-web](https://github.com/algolia/instantsearch/tree/master/packages/react-instantsearch-hooks-web) for Svelte, exposing a similar API.
 
+> [!IMPORTANT]
+> This library **only works with SvelteKit**. It is now the default when you bootstrap a Svelte project.
+
 ## Installation
 
 ```sh
