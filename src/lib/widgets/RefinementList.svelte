@@ -22,6 +22,10 @@
      */
     searchBox: string;
     /**
+     * Class names to apply to the input element
+     */
+    input: string;
+    /**
      * Class names to apply to the root element
      */
     noResults: string;
@@ -161,7 +165,7 @@
           }}
         >
           <input
-            class="ais-SearchBox-input"
+            class={cx("ais-SearchBox-input", classes.input)}
             type="search"
             bind:value={query}
             on:input={(event) => searchForItems(event.currentTarget.value)}
