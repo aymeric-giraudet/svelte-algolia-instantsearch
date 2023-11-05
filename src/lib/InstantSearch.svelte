@@ -9,7 +9,10 @@
   import { setIndexContext } from "./indexContext";
   import { onDestroyClientSide } from "./utils";
 
-  type $$Props = Omit<InstantSearchOptions, ""> & { indexName: string; searchClient: SearchClient };
+  type $$Props = Omit<InstantSearchOptions, "searchFunction" | "insightsClients"> & {
+    indexName: string;
+    searchClient: SearchClient;
+  };
 
   export let indexName: $$Props["indexName"];
   export let searchClient: $$Props["searchClient"];
@@ -18,6 +21,7 @@
   export let onStateChange: $$Props["onStateChange"] = undefined;
   export let initialUiState: $$Props["initialUiState"] = undefined;
   export let insights: $$Props["insights"] = undefined;
+  export let numberLocale: $$Props["numberLocale"] = undefined;
 
   let search: InstantSearch;
 
@@ -31,6 +35,7 @@
       onStateChange,
       initialUiState,
       insights,
+      numberLocale,
       routing: routing && {
         router: history({
           getLocation() {
