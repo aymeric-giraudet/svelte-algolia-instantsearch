@@ -1,3 +1,12 @@
+## [0.11.1](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.11.0...v0.11.1) (2023-11-05)
+
+
+### Bug Fixes
+
+* **InstantSearch:** remove deprecated options ([2082061](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/2082061d1f36bc18b6e121d9fa0b22b130f74146))
+
+
+
 # [0.11.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.10.2...v0.11.0) (2023-11-05)
 
 
