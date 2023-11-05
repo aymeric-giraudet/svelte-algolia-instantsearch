@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { SearchClient } from "algoliasearch/lite";
-  import InstantSearch from "instantsearch.js/es/lib/InstantSearch";
+  import InstantSearch, { type InstantSearchOptions } from "instantsearch.js/es/lib/InstantSearch";
   import { history } from "instantsearch.js/es/lib/routers";
   import { setInstantSearchContext } from "./instantSearchContext";
   import { tick } from "svelte";
@@ -9,10 +9,15 @@
   import { setIndexContext } from "./indexContext";
   import { onDestroyClientSide } from "./utils";
 
-  export let indexName: string;
-  export let searchClient: SearchClient;
-  export let stalledSearchDelay: number | undefined = undefined;
-  export let routing = false;
+  type $$Props = Omit<InstantSearchOptions, ""> & { indexName: string; searchClient: SearchClient };
+
+  export let indexName: $$Props["indexName"];
+  export let searchClient: $$Props["searchClient"];
+  export let stalledSearchDelay: $$Props["stalledSearchDelay"] = undefined;
+  export let routing: $$Props["routing"] = undefined;
+  export let onStateChange: $$Props["onStateChange"] = undefined;
+  export let initialUiState: $$Props["initialUiState"] = undefined;
+  export let insights: $$Props["insights"] = undefined;
 
   let search: InstantSearch;
 
@@ -23,6 +28,9 @@
       indexName,
       searchClient,
       stalledSearchDelay,
+      onStateChange,
+      initialUiState,
+      insights,
       routing: routing && {
         router: history({
           getLocation() {
@@ -56,7 +64,7 @@
 
     search.start();
 
-    if('addAlgoliaAgent' in searchClient) {
+    if ("addAlgoliaAgent" in searchClient) {
       searchClient.addAlgoliaAgent("svelte-algolia-instantsearch", "1.0.0");
     }
 
