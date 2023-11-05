@@ -1,3 +1,12 @@
+# [0.11.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.10.2...v0.11.0) (2023-11-05)
+
+
+### Features
+
+* **InstantSearch:** add remaining props ([87caa6b](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/87caa6bc6207de87a51f8a12c6a75cfe190642e8))
+
+
+
 ## [0.10.2](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.10.1...v0.10.2) (2023-09-27)
 
 
