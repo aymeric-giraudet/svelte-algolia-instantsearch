@@ -40,7 +40,7 @@
     { attribute, on, off },
     { $$widgetType: "svelte-ais.toggleRefinement" },
   );
-  $: ({ refine, value } = $state);
+  $: ({ refine, canRefine, value } = $state);
 
   $: labelToDisplay = label || value.name;
 </script>
@@ -48,6 +48,7 @@
 <div class={cx("ais-ToggleRefinement", classes.root)}>
   <label class={cx("ais-ToggleRefinement-label", classes.label)}>
     <input
+      disabled={!canRefine}
       class={cx("ais-ToggleRefinement-checkbox", classes.checkbox)}
       type="checkbox"
       checked={value.isRefined}
