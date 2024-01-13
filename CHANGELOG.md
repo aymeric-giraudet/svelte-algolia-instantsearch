@@ -1,3 +1,12 @@
+## [0.12.1](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.12.0...v0.12.1) (2024-01-13)
+
+
+### Bug Fixes
+
+* mark as compatible with SvelteKit 2 ([2147451](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/commit/21474517b0d2623a16481d23c0d2432be261a15a))
+
+
+
 # [0.12.0](https://github.com/aymeric-giraudet/svelte-algolia-instantsearch/compare/v0.11.1...v0.12.0) (2023-11-08)
 
 
