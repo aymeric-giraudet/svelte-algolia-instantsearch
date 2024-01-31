@@ -9,6 +9,11 @@ export const getServerContext = () =>
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getServerState(component: any, serverUrl: URL): Promise<Record<string, any>> {
+  return getServerStateWithProps(component, serverUrl, {});
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getServerStateWithProps(component: any, serverUrl: URL, props: any): Promise<Record<string, any>> {
   return new Promise((resolve) => {
     const notifyServer = async (search: InstantSearch) => {
       await waitForResults(search);
@@ -16,6 +21,7 @@ export function getServerState(component: any, serverUrl: URL): Promise<Record<s
       search.dispose();
       resolve(results);
     };
-    component.render({}, { context: new Map([[serverContext, { notifyServer, serverUrl }]]) });
+    component.render(props, { context: new Map([[serverContext, { notifyServer, serverUrl }]]) });
   });
 }
+
