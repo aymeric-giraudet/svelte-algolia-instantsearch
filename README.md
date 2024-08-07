@@ -1,6 +1,8 @@
 # svelte-algolia-instantsearch
 
-This library is a community-developed wrapper around [instantsearch.js](https://github.com/algolia/instantsearch) for Svelte.
+This library is a **community developed** wrapper around [instantsearch.js](https://github.com/algolia/instantsearch) for Svelte. 
+
+**It is not affiliated nor backed by Algolia.**
 
 It is meant to be an equivalent of [react-instantsearch-hooks-web](https://github.com/algolia/instantsearch/tree/master/packages/react-instantsearch-hooks-web) for Svelte, exposing a similar API.
 
