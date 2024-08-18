@@ -18,7 +18,7 @@
     RangeInput,
     Stats,
   } from "$lib";
-  import algoliasearch from "algoliasearch/lite";
+  import { algoliasearch } from "algoliasearch";
 
   import Panel from "./Panel.svelte";
 
