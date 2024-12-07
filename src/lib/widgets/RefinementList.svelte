@@ -1,6 +1,7 @@
 <script lang="ts">
   import { connectRefinementList } from "instantsearch.js/es/connectors";
   import type { RefinementListConnectorParams } from "instantsearch.js/es/connectors/refinement-list/connectRefinementList";
+  import Highlight from "./Highlight.svelte";
 
   import connect from "$lib/connect";
   import { cx } from "$lib/utils";
@@ -140,6 +141,15 @@
   } = $state);
 
   let query = "";
+  $: itemsHighlighted = items.map(item =>
+    Object.assign({}, item, {
+      _highlightResult: {
+        item: {
+          value: item.highlighted,
+        },
+      },
+    })
+  );
   $: noResults = searchable && isFromSearch && items.length === 0 && labels.noResultsText;
 </script>
 
@@ -197,7 +207,7 @@
     </div>
   {:else}
     <ul class={cx("ais-RefinementList-list", classes.list)}>
-      {#each items as item}
+      {#each itemsHighlighted as item}
         <li
           class={cx(
             "ais-RefinementList-item",
@@ -217,7 +227,11 @@
               }}
             />
             <span class={cx("ais-RefinementList-labelText", classes.labelText)}>
-              {item.label}
+              {#if query.length > 0}
+                <Highlight attribute="item" hit={item} />
+              {:else}
+                {item.label}
+              {/if}
             </span>
             <span class={cx("ais-RefinementList-count", classes.count)}>
               {item.count}
