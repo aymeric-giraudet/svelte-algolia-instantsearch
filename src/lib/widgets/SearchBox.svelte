@@ -57,6 +57,7 @@
 
   type $$Props = SearchBoxConnectorParams & {
     placeholder?: string;
+    autofocus?: boolean;
     searchAsYouType?: boolean;
     classes?: Partial<SearchBoxClasses>;
     translations?: Partial<SearchBoxTranslations>;
@@ -64,6 +65,7 @@
   export let queryHook: $$Props["queryHook"] = undefined;
 
   export let placeholder = "";
+  export let autofocus = true;
   export let searchAsYouType = true;
   // TODO: add support for handlers
 
@@ -116,6 +118,7 @@
       value={query}
       on:input={(event) => searchAsYouType && refine(event.currentTarget.value)}
       {placeholder}
+      {autofocus}
     />
 
     <button
