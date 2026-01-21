@@ -26,6 +26,10 @@
      */
     input: string;
     /**
+     * Class names to apply to the reset button
+     */
+    reset: string;
+    /**
      * Class names to apply to the root element
      */
     noResults: string;
@@ -172,7 +176,7 @@
             placeholder={searchablePlaceholder}
           />
           <button
-            class="ais-SearchBox-reset"
+            class={cx("ais-SearchBox-reset", classes.reset)}
             on:click={() => {
               searchForItems("");
               query = "";
